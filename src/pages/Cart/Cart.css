@@ -1,0 +1,97 @@
+.cart-wrapper {
+  width: 90%;
+  margin: 5rem auto 7rem auto;
+}
+
+.cart-heading {
+  font-weight: 600;
+  font-size: 3rem;
+}
+
+.num-items {
+  font-size: 2rem;
+  color: var(--dark-gray);
+}
+
+.cart-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-items {
+  flex-shrink: 2;
+}
+
+.cart-items .ecomm-horizontal-card {
+  margin: 3.2rem 0;
+  width: 100%;
+}
+
+.cart-items .prod-title {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.cart-items .prod-category {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--dark-gray);
+}
+
+.cart-items .ecomm-horizontal-card .num-products {
+  width: fit-content;
+}
+
+.cart-items .ecomm-horizontal-card img {
+  height: auto;
+}
+
+.cart-items .ecomm-horizontal-card .h-card-price {
+  padding: 0.2rem 0;
+  font-size: 1.5rem;
+}
+
+.cart-items .ecomm-horizontal-card .remove-btn {
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
+.cart-price-container {
+  margin-left: 5rem;
+  width: 40rem;
+}
+
+.cart-price-container .ecomm-billing-card {
+  width: 100%;
+}
+
+.ecomm-billing-card .billing-card-title {
+  font-size: 2rem;
+}
+
+.ecomm-billing-card .item-type,
+.ecomm-billing-card .item-type-price {
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 1150px) {
+  .cart-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cart-price-container {
+    margin: 1.6rem auto;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .cart-container .prod-action-btn {
+    grid-column: 1/3;
+  }
+
+  .cart-container .remove-btn {
+    grid-row: 6/7;
+  }
+}
