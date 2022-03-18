@@ -5,14 +5,14 @@ import Logout from "./pages/Authentication/Logout/Logout";
 import Signup from "./pages/Authentication/Signup/Signup";
 import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home/Home";
-import Products from "./pages/Products/Products";
+import ProductListing from "./pages/ProductListing/ProductListing";
 import Wishlist from "./pages/Wishlist/Wishlist";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Wishlist />
+      <ProductListing />
       <Footer />
     </div>
   );
