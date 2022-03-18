@@ -6,6 +6,7 @@ import Signup from "./pages/Authentication/Signup/Signup";
 import Cart from "./pages/Cart/Cart";
 import Home from "./pages/Home/Home";
 import Products from "./pages/Products/Products";
+import Wishlist from "./pages/Wishlist/Wishlist";
 
 function App() {
   return (

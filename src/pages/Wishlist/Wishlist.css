@@ -1,0 +1,75 @@
+body {
+  background-color: var(--gray);
+}
+
+.wishlist-wrapper {
+  width: 90%;
+  margin: 5rem auto 7rem auto;
+}
+
+.wishlist-heading {
+  font-weight: 600;
+  font-size: 3rem;
+}
+
+.num-items {
+  font-size: 2rem;
+  color: var(--dark-gray);
+}
+
+.wishlist-items {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(auto-fill, 32rem);
+  justify-items: center;
+  grid-gap: 2.5rem;
+  margin: 3rem 0;
+}
+
+.wishlist-items .product-card {
+  width: 100%;
+  max-width: 40rem;
+}
+
+.product-card .overlay-icon {
+  font-size: 2.5rem;
+  height: 4rem;
+  width: 4rem;
+  background-color: var(--secondary-color);
+  color: var(--red);
+}
+
+.product-card .prod-ecomm-badge {
+  color: var(--golden);
+  padding: 1rem;
+  font-size: 1.5rem;
+  background-color: var(--red);
+}
+
+.prod-title {
+  font-size: 2.5rem;
+}
+
+.prod-category {
+  font-size: 2rem;
+  color: var(--dark-gray);
+}
+
+.product-card-content p {
+  font-size: 1.7rem;
+}
+
+.card-discount {
+  font-weight: 600;
+}
+
+.prod-action-btn {
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.prod-action-btn:hover {
+  background-color: var(--red);
+  color: var(--golden);
+}
