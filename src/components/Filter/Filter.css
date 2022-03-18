@@ -1,0 +1,54 @@
+.filter-container {
+  background-color: var(--secondary-color);
+  width: 25rem;
+}
+
+.filter-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.main-heading {
+  font-size: 2.5rem;
+}
+
+.filter-clear-btn {
+  color: var(--dark-blue);
+  text-decoration: underline;
+}
+
+.filter-type {
+  margin: 2rem;
+}
+
+.filter-type-heading {
+  font-size: 2rem;
+}
+
+.filter-type-container {
+  margin: 1rem;
+}
+
+.filter-type-container .cost-slider {
+  margin: 0.5rem;
+}
+
+.filter-type-container label {
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+}
+
+/* Overriding style of rating from component library */
+.filter-type-container input:not(:checked) ~ label:hover,
+.filter-type-container input:checked ~ label,
+.filter-type-container input:not(:checked) ~ label:hover ~ label {
+  color: var(--default-color);
+}
+/* Style override ends */
+
+.filter-type-container input {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
