@@ -2,7 +2,7 @@ import { WishlistItem } from "../WishlistItem/WishlistItem";
 
 export const WishlistItems = () => {
   return (
-    <section class="wishlist-items">
+    <section className="wishlist-items">
       <WishlistItem />
       <WishlistItem />
       <WishlistItem />
