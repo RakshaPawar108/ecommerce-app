@@ -6,7 +6,7 @@ import {
 } from "../../assets/images";
 import "./Home.css";
 
-const Home = () => {
+export const Home = () => {
   return (
     <main className="home-wrapper">
       <section className="hero overlay">
@@ -152,5 +152,3 @@ const Home = () => {
     </main>
   );
 };
-
-export default Home;

@@ -1,6 +1,6 @@
 import "./../Auth.css";
 
-const Logout = () => {
+export const Logout = () => {
   return (
     <main className="main-wrapper">
       <div className="auth-container">
@@ -15,5 +15,3 @@ const Logout = () => {
     </main>
   );
 };
-
-export default Logout;

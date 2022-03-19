@@ -1,6 +1,6 @@
 import "./../Auth.css";
 
-const Signup = () => {
+export const Signup = () => {
   return (
     <main className="main-wrapper">
       <form className="auth-container">
@@ -39,5 +39,3 @@ const Signup = () => {
     </main>
   );
 };
-
-export default Signup;
