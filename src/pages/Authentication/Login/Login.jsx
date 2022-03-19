@@ -1,4 +1,5 @@
 import "./../Auth.css";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   return (
@@ -27,7 +28,7 @@ export const Login = () => {
           </span>
 
           <p className="auth-link">
-            <a href="/">Forgot Password?</a>
+            <Link to="/">Forgot Password?</Link>
           </p>
         </div>
 
@@ -36,7 +37,7 @@ export const Login = () => {
         </button>
         <p className="auth-link">
           Don't have an account?
-          <a href="/Signup/signup.html">Sign Up</a>
+          <Link to="/signup">Sign Up</Link>
         </p>
       </form>
     </main>

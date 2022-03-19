@@ -1,4 +1,5 @@
 import "./../Auth.css";
+import { Link } from "react-router-dom";
 
 export const Signup = () => {
   return (
@@ -33,7 +34,7 @@ export const Signup = () => {
         </button>
         <p className="auth-link">
           Already have an existing account?
-          <a href="/Login/login.html">Login</a>
+          <Link to="/login">Login</Link>
         </p>
       </form>
     </main>

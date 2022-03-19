@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 const Footer = () => {
@@ -18,45 +19,57 @@ const Footer = () => {
 
         <ul className="footer-nav-links">
           <li>
-            <a href="/Home/home.html">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/">Contact Us</a>
+            <Link to="/">Contact Us</Link>
           </li>
           <li>
-            <a href="/Product/product.html">Our Products</a>
+            <Link to="/products">Our Products</Link>
           </li>
           <li>
-            <a href="/">Featured</a>
+            <Link to="/">Featured</Link>
           </li>
         </ul>
 
         <ul className="footer-nav-links">
           <li>
-            <a href="/Cart/cart.html">My Cart</a>
+            <Link to="/cart">My Cart</Link>
           </li>
           <li>
-            <a href="/Signup/signup.html">Sign up</a>
+            <Link to="/signup">Sign up</Link>
           </li>
           <li>
-            <a href="/Login/login.html">Login</a>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
 
         <ul className="footer-social-links">
           <li>
-            <a href="https://twitter.com/rakshapawar108">
+            <a
+              href="https://twitter.com/rakshapawar108"
+              target="_blank"
+              rel="noreferrer"
+            >
               <i className="fab fa-twitter" title="Twitter"></i>Twitter
             </a>
           </li>
           <li>
-            <a href="https://github.com/RakshaPawar108">
+            <a
+              href="https://github.com/RakshaPawar108"
+              target="_blank"
+              rel="noreferrer"
+            >
               <i className="fab fa-github" title="Github"></i>GitHub
             </a>
           </li>
 
           <li>
-            <a href="https://www.linkedin.com/in/rakshapawar/">
+            <a
+              href="https://www.linkedin.com/in/rakshapawar/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <i className="fab fa-linkedin" title="LinkedIn"></i>LinkedIn
             </a>
           </li>
