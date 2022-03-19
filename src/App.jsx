@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Navbar, Footer } from "./components/index";
+import { Navbar, Footer } from "./components";
 import {
   Home,
   Cart,
@@ -8,7 +8,7 @@ import {
   Logout,
   ProductListing,
   Wishlist,
-} from "./pages/index";
+} from "./pages";
 
 function App() {
   return (

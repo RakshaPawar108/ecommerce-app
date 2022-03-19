@@ -1,4 +1,4 @@
-import { WishlistItems } from "../../components/index";
+import { WishlistItems } from "../../components";
 import "./Wishlist.css";
 
 export const Wishlist = () => {

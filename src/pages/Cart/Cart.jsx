@@ -1,4 +1,4 @@
-import { CartBill, CartItems } from "./../../components/index";
+import { CartBill, CartItems } from "./../../components";
 import "./Cart.css";
 
 export const Cart = () => {

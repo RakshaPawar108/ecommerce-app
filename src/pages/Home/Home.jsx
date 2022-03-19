@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   dessertImg,
   healthyImg,
@@ -14,7 +15,11 @@ export const Home = () => {
           <article>
             <h3 className="intro-heading">Good Food, Good Mood</h3>
             <p className="intro-sub-heading">Save 60% on your first order</p>
-            <button className="button btn-outlined intro-btn">Order Now</button>
+            <Link to="/products">
+              <button className="button btn-outlined intro-btn">
+                Order Now
+              </button>
+            </Link>
           </article>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import "./ProductListing.css";
 import "./../../index.css";
-import { Filter, Products } from "./../../components/index";
+import { Filter, Products } from "./../../components";
 
 export const ProductListing = () => {
   return (
