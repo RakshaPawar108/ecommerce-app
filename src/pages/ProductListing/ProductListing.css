@@ -1,0 +1,24 @@
+.product-wrapper {
+  display: flex;
+  background-color: var(--gray);
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+  justify-items: center;
+  grid-gap: 2.5rem;
+  margin: 2rem;
+  flex-grow: 1;
+}
+
+.product-container .product-card {
+  width: 100%;
+  max-width: 40rem;
+}
+
+@media only screen and (max-width: 1024px) {
+  .filter-container {
+    display: none;
+  }
+}
