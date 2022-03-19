@@ -1,4 +1,5 @@
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -6,7 +7,7 @@ const Navbar = () => {
       <input type="checkbox" id="check" />
       <header className="header">
         <div className="navigation-brand">
-          <a href="/index.html">MySite</a>
+          <Link to="/">MySite</Link>
         </div>
 
         <div className="input-container outlined search-box">
@@ -17,29 +18,29 @@ const Navbar = () => {
         <ul className="navigation-items">
           <li className="navigation-item">
             <button className="button">
-              <a href="/Login/login.html">Login</a>
+              <Link to="/login">Login</Link>
             </button>
           </li>
           <li className="navigation-item">
-            <a href="/Product/product.html">Products</a>
+            <Link to="/products">Products</Link>
           </li>
           <li className="navigation-item">
-            <a href="/Wishlist/wishlist.html">
+            <Link to="/wishlist">
               <div className="icons-container badge">
                 <i className="fas fa-heart badge-icon"></i>
                 <span className="icon-badge">10</span>
               </div>
               <span>Wishlist</span>
-            </a>
+            </Link>
           </li>
           <li className="navigation-item">
-            <a href="/Cart/cart.html">
+            <Link to="/cart">
               <div className="icons-container badge">
                 <i className="fas fa-shopping-cart badge-icon"></i>
                 <span className="icon-badge">5</span>
               </div>
               <span>Cart</span>
-            </a>
+            </Link>
           </li>
         </ul>
 
@@ -52,4 +53,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export { Navbar };

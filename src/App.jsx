@@ -1,18 +1,28 @@
-import Footer from "./components/Footer/Footer";
-import Navbar from "./components/Navbar/Navbar";
-import Login from "./pages/Authentication/Login/Login";
-import Logout from "./pages/Authentication/Logout/Logout";
-import Signup from "./pages/Authentication/Signup/Signup";
-import Cart from "./pages/Cart/Cart";
-import Home from "./pages/Home/Home";
-import ProductListing from "./pages/ProductListing/ProductListing";
-import Wishlist from "./pages/Wishlist/Wishlist";
+import { Route, Routes } from "react-router-dom";
+import { Navbar, Footer } from "./components";
+import {
+  Home,
+  Cart,
+  Login,
+  Signup,
+  Logout,
+  ProductListing,
+  Wishlist,
+} from "./pages";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/products" element={<ProductListing />} />
+        <Route path="/logout" element={<Logout />} />
+      </Routes>
       <Footer />
     </div>
   );

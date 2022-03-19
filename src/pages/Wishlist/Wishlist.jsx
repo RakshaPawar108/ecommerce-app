@@ -1,7 +1,7 @@
-import { WishlistItems } from "../../components/Wishlist/WishlistItems/WishlistItems";
+import { WishlistItems } from "../../components";
 import "./Wishlist.css";
 
-const Wishlist = () => {
+export const Wishlist = () => {
   return (
     <main className="wishlist-wrapper">
       <h3 className="wishlist-heading">My Wishlist</h3>
@@ -10,5 +10,3 @@ const Wishlist = () => {
     </main>
   );
 };
-
-export default Wishlist;

@@ -1,6 +1,7 @@
 import "./../Auth.css";
+import { Link } from "react-router-dom";
 
-const Signup = () => {
+export const Signup = () => {
   return (
     <main className="main-wrapper">
       <form className="auth-container">
@@ -33,11 +34,9 @@ const Signup = () => {
         </button>
         <p className="auth-link">
           Already have an existing account?
-          <a href="/Login/login.html">Login</a>
+          <Link to="/login">Login</Link>
         </p>
       </form>
     </main>
   );
 };
-
-export default Signup;

@@ -75,4 +75,4 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+export { Filter };
