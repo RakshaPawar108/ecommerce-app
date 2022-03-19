@@ -43,7 +43,7 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <label for="check" className="bar">
+        <label htmlFor="check" className="bar">
           <span className="fas fa-2x fa-bars navbar-open-btn"></span>
           <span className="far fa-2x fa-times-circle navbar-close-btn"></span>
         </label>
