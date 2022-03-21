@@ -54,6 +54,9 @@ export const products = [
     prodImg: chickenBurger,
     price: 250,
     categoryName: "fast-food",
+    badgeTitle: "New",
+    inWishlist: false,
+    prodDiscount: "50%",
   },
   {
     _id: uuid(),
@@ -61,6 +64,9 @@ export const products = [
     prodImg: cookies,
     price: 150,
     categoryName: "bakery",
+    badgeTitle: "New",
+    inWishlist: false,
+    prodDiscount: "20%",
   },
   {
     _id: uuid(),
@@ -68,5 +74,8 @@ export const products = [
     prodImg: kiwiJuice,
     price: 56,
     categoryName: "juices",
+    badgeTitle: "New",
+    inWishlist: false,
+    prodDiscount: "50%",
   },
 ];

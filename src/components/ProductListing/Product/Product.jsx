@@ -1,20 +1,26 @@
-import { pizzaImg } from "../../../assets/images";
-
-export const Product = () => {
+export const Product = ({
+  prodTitle,
+  prodImg,
+  price,
+  categoryName,
+  badgeTitle,
+  inWishlist,
+  prodDiscount,
+}) => {
   return (
     <div className="card product-card">
-      <img src={pizzaImg} alt="card with icon" className="product-card-img" />
+      <img src={prodImg} alt="card with icon" className="product-card-img" />
       <div className="product-card-content">
-        <h3 className="prod-title">Product Title</h3>
-        <h4 className="prod-category">Product Category</h4>
+        <h3 className="prod-title">{prodTitle}</h3>
+        <h4 className="prod-category">{categoryName}</h4>
         <i className="fas fa-heart overlay-icon"></i>
-        <span className="prod-ecomm-badge">New</span>
+        <span className="prod-ecomm-badge">{badgeTitle}</span>
         <p>
-          <strong>Rs. 1499</strong>{" "}
+          <strong>₹ {price}</strong>{" "}
           <small>
-            <s>Rs. 2999</s>
+            <s>₹ 2999</s>
           </small>
-          <small className="card-discount">(50% OFF)</small>
+          <small className="card-discount">({prodDiscount} OFF)</small>
         </p>
         <a href="/" className="prod-action-btn">
           Move to Cart
