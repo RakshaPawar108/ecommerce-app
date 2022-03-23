@@ -8,7 +8,11 @@ export const Products = () => {
   const listProducts = async () => {
     try {
       const response = await axios.get("/api/products");
-      setProducts(response.data.products);
+      if (response.status === 200) {
+        setProducts(response.data.products);
+      } else {
+        throw new Error();
+      }
     } catch (e) {
       console.log(e);
     }
