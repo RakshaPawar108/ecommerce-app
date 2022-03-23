@@ -1,1 +1,1 @@
-export { FilterProvider } from "./filter-context.jsx";
+export { FilterProvider, useFilter } from "./filter-context.jsx";
