@@ -27,16 +27,32 @@ const Filter = () => {
           <label htmlFor="fast-food">Fast Food</label>
         </div>
         <div className="filter-type-container">
-          <input type="checkbox" id="veg" />
-          <label htmlFor="veg">Vegetarian</label>
+          <input type="checkbox" id="indian-food" />
+          <label htmlFor="indian-food">Indian Food</label>
         </div>
         <div className="filter-type-container">
-          <input type="checkbox" id="non-veg" />
-          <label htmlFor="non-veg">Non Vegetarian</label>
+          <input type="checkbox" id="desserts" />
+          <label htmlFor="desserts">Desserts</label>
         </div>
         <div className="filter-type-container">
-          <input type="checkbox" id="continental" />
-          <label htmlFor="continental">Continental</label>
+          <input type="checkbox" id="bakery" />
+          <label htmlFor="bakery">Bakery</label>
+        </div>
+        <div className="filter-type-container">
+          <input type="checkbox" id="juices" />
+          <label htmlFor="juices">Juices</label>
+        </div>
+      </div>
+
+      <div className="filter-type">
+        <h3 className="filter-type-heading">Sort by</h3>
+        <div className="filter-type-container">
+          <input type="radio" id="low-to-high" name="sort-by" />
+          <label htmlFor="low-to-high">Price - Low to High</label>
+        </div>
+        <div className="filter-type-container">
+          <input type="radio" id="high-to-low" name="sort-by" />
+          <label htmlFor="high-to-low">Price - High to Low</label>
         </div>
       </div>
 
@@ -57,18 +73,6 @@ const Filter = () => {
         <div className="filter-type-container">
           <input type="radio" name="star-rating" />
           <label htmlFor="star-one">1⭐ and above</label>
-        </div>
-      </div>
-
-      <div className="filter-type">
-        <h3 className="filter-type-heading">Sort by</h3>
-        <div className="filter-type-container">
-          <input type="radio" id="low-to-high" name="sort-by" />
-          <label htmlFor="low-to-high">Price - Low to High</label>
-        </div>
-        <div className="filter-type-container">
-          <input type="radio" id="high-to-low" name="sort-by" />
-          <label htmlFor="high-to-low">Price - High to Low</label>
         </div>
       </div>
     </aside>
