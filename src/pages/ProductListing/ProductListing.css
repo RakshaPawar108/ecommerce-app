@@ -17,6 +17,19 @@
   max-width: 40rem;
 }
 
+.prod-img-container {
+  object-fit: contain;
+  height: 40rem;
+  width: 100%;
+}
+
+.product-card-img {
+  max-width: 100%;
+  object-fit: contain;
+  height: 40rem;
+  width: 100%;
+}
+
 @media only screen and (max-width: 1024px) {
   .filter-container {
     display: none;

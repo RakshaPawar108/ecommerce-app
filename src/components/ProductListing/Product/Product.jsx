@@ -9,7 +9,9 @@ export const Product = ({
 }) => {
   return (
     <div className="card product-card">
-      <img src={prodImg} alt="card with icon" className="product-card-img" />
+      <div className="prod-img-container">
+        <img src={prodImg} alt="card with icon" className="product-card-img" />
+      </div>
       <div className="product-card-content">
         <h3 className="prod-title">{prodTitle}</h3>
         <h4 className="prod-category">{categoryName}</h4>
