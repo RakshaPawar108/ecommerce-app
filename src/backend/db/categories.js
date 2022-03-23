@@ -8,20 +8,33 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "healthy",
     description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+      "Delicious and protein-rich healthy food to make sure you stay consistent with your diet while eating good food.",
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+    categoryName: "indian-food",
+    description: "Delicacies of India from various states for the desi heart.",
   },
   {
     _id: uuid(),
-    categoryName: "horror",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+    categoryName: "fast-food",
+    description: "Finger foods for the cheat days to curb the cravings.",
+  },
+  {
+    _id: uuid(),
+    categoryName: "desserts",
+    description: "Sweeeeeettttt!....need I say more?",
+  },
+  {
+    _id: uuid(),
+    categoryName: "bakery",
+    description: "For the love of all things baked and bread.",
+  },
+  {
+    _id: uuid(),
+    categoryName: "juices",
+    description: "To detox or get refreshed with the sweetness of fruits.",
   },
 ];
