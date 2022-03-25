@@ -1,11 +1,19 @@
 import "./Filter.css";
+import { useFilter } from "./../../context/";
 
 const Filter = () => {
+  const { state, dispatch } = useFilter();
+  const { sortBy, priceRange } = state;
   return (
     <aside className="filter-container">
       <div className="filter-heading">
         <h2 className="main-heading">Filters</h2>
-        <button className="filter-clear-btn">Clear</button>
+        <button
+          className="filter-clear-btn"
+          onClick={() => dispatch({ type: "CLEAR_FILTER", payload: {} })}
+        >
+          Clear
+        </button>
       </div>
 
       <div className="filter-type">
@@ -47,11 +55,23 @@ const Filter = () => {
       <div className="filter-type">
         <h3 className="filter-type-heading">Sort by</h3>
         <div className="filter-type-container">
-          <input type="radio" id="low-to-high" name="sort-by" />
+          <input
+            type="radio"
+            id="low-to-high"
+            name="sort-by"
+            checked={sortBy === "LOW_TO_HIGH"}
+            onChange={() => dispatch({ type: "LOW_TO_HIGH", payload: {} })}
+          />
           <label htmlFor="low-to-high">Price - Low to High</label>
         </div>
         <div className="filter-type-container">
-          <input type="radio" id="high-to-low" name="sort-by" />
+          <input
+            type="radio"
+            id="high-to-low"
+            name="sort-by"
+            checked={sortBy === "HIGH_TO_LOW"}
+            onChange={() => dispatch({ type: "HIGH_TO_LOW", payload: {} })}
+          />
           <label htmlFor="high-to-low">Price - High to Low</label>
         </div>
       </div>
