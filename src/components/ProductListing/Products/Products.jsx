@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { Product } from "../Product/Product";
 import axios from "axios";
+import { sortProducts } from "./../../../utils";
+import { useFilter } from "../../../context";
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
+  const { state } = useFilter();
 
   const listProducts = async () => {
     try {
@@ -19,9 +22,11 @@ export const Products = () => {
   };
 
   useEffect(() => listProducts(), []);
+
+  const sortedProducts = sortProducts(products, state.sortBy);
   return (
     <section className="product-container">
-      {products.map((product) => (
+      {sortedProducts.map((product) => (
         <Product
           prodTitle={product.prodTitle}
           prodImg={product.prodImg}

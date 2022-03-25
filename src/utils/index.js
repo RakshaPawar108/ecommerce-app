@@ -1,0 +1,1 @@
+export { sortProducts } from "./sort";
