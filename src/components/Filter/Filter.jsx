@@ -28,8 +28,20 @@ const Filter = () => {
       <div className="filter-type">
         <h3 className="filter-type-heading">Price</h3>
         <div className="filter-type-container">
-          <label htmlFor="cost-slider">Rs.0 - Rs.1000</label>
-          <input type="range" id="cost-slider" min="0" max="1000" value="500" />
+          <label htmlFor="cost-slider">₹0 - ₹{priceRange}</label>
+          <input
+            type="range"
+            id="cost-slider"
+            min="0"
+            max="1000"
+            value={priceRange}
+            onChange={(event) =>
+              dispatch({
+                type: "PRICE_RANGE",
+                payload: { priceRange: event.target.value },
+              })
+            }
+          />
         </div>
       </div>
 
@@ -159,7 +171,11 @@ const Filter = () => {
             id="low-to-high"
             name="sort-by"
             checked={sortBy === "LOW_TO_HIGH"}
-            onChange={() => dispatch({ type: "LOW_TO_HIGH", payload: {} })}
+            onChange={() =>
+              dispatch({
+                type: "LOW_TO_HIGH",
+              })
+            }
           />
           <label htmlFor="low-to-high">Price - Low to High</label>
         </div>
@@ -169,7 +185,11 @@ const Filter = () => {
             id="high-to-low"
             name="sort-by"
             checked={sortBy === "HIGH_TO_LOW"}
-            onChange={() => dispatch({ type: "HIGH_TO_LOW", payload: {} })}
+            onChange={() =>
+              dispatch({
+                type: "HIGH_TO_LOW",
+              })
+            }
           />
           <label htmlFor="high-to-low">Price - High to Low</label>
         </div>

@@ -1,13 +1,4 @@
 const filterReducer = (state, action) => {
-  const {
-    healthy,
-    fastFood,
-    indianFood,
-    desserts,
-    bakery,
-    juices,
-    priceRange,
-  } = action.payload;
   switch (action.type) {
     case "LOW_TO_HIGH":
       return { ...state, sortBy: action.type };
@@ -18,29 +9,38 @@ const filterReducer = (state, action) => {
     case "HEALTHY":
       return {
         ...state,
-        healthy: healthy,
+        healthy: action.payload.healthy,
       };
 
     case "FAST_FOOD":
-      return { ...state, fastFood: fastFood };
+      return { ...state, fastFood: action.payload.fastFood };
 
     case "INDIAN_FOOD":
-      return { ...state, indianFood: indianFood };
+      return { ...state, indianFood: action.payload.indianFood };
 
     case "DESSERTS":
-      return { ...state, desserts: desserts };
+      return { ...state, desserts: action.payload.desserts };
 
     case "BAKERY":
-      return { ...state, bakery: bakery };
+      return { ...state, bakery: action.payload.bakery };
 
     case "JUICES":
-      return { ...state, juices: juices };
+      return { ...state, juices: action.payload.juices };
 
     case "PRICE_RANGE":
-      return { ...state, priceRange: priceRange };
+      return { ...state, priceRange: action.payload.priceRange };
 
     case "CLEAR_FILTER":
-      return { sortBy: "", priceRange: 100, healthy: false };
+      return {
+        sortBy: "",
+        priceRange: 1000,
+        healthy: false,
+        fastFood: false,
+        indianFood: false,
+        desserts: false,
+        bakery: false,
+        juices: false,
+      };
 
     default:
       return { ...state };

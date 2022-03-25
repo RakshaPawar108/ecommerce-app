@@ -1,4 +1,4 @@
-const sortProducts = (products, sortBy) => {
+const sortProducts = (products, { sortBy }) => {
   let sortedProducts = [...products];
   if (sortBy === "LOW_TO_HIGH") {
     sortedProducts = sortedProducts.sort(

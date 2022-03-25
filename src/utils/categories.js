@@ -1,44 +1,44 @@
 const categoryFilter = (
-  sortedProducts,
+  priceFilteredProducts,
   { healthy, fastFood, indianFood, desserts, bakery, juices }
 ) => {
   if (!healthy && !fastFood && !indianFood && !desserts && !bakery && !juices) {
-    return sortedProducts;
+    return priceFilteredProducts;
   }
 
   const filteredProducts = [];
   if (healthy) {
-    let newList = sortedProducts.filter(
+    let newList = priceFilteredProducts.filter(
       (product) => product.categoryName === "healthy"
     );
     filteredProducts.push(...newList);
   }
   if (fastFood) {
-    let newList = sortedProducts.filter(
+    let newList = priceFilteredProducts.filter(
       (product) => product.categoryName === "fast-food"
     );
     filteredProducts.push(...newList);
   }
   if (indianFood) {
-    let newList = sortedProducts.filter(
+    let newList = priceFilteredProducts.filter(
       (product) => product.categoryName === "indian-food"
     );
     filteredProducts.push(...newList);
   }
   if (desserts) {
-    let newList = sortedProducts.filter(
+    let newList = priceFilteredProducts.filter(
       (product) => product.categoryName === "desserts"
     );
     filteredProducts.push(...newList);
   }
   if (bakery) {
-    let newList = sortedProducts.filter(
+    let newList = priceFilteredProducts.filter(
       (product) => product.categoryName === "bakery"
     );
     filteredProducts.push(...newList);
   }
   if (juices) {
-    let newList = sortedProducts.filter(
+    let newList = priceFilteredProducts.filter(
       (product) => product.categoryName === "juices"
     );
     filteredProducts.push(...newList);

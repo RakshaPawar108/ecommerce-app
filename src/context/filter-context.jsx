@@ -12,7 +12,7 @@ const FilterProvider = ({ children }) => {
     desserts: false,
     bakery: false,
     juices: false,
-    priceRange: 100,
+    priceRange: 1000,
   });
   return (
     <FilterContext.Provider value={{ state, dispatch }}>
