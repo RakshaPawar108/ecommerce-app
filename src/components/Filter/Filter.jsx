@@ -3,7 +3,16 @@ import { useFilter } from "./../../context/";
 
 const Filter = () => {
   const { state, dispatch } = useFilter();
-  const { sortBy, priceRange } = state;
+  const {
+    sortBy,
+    healthy,
+    fastFood,
+    indianFood,
+    desserts,
+    bakery,
+    juices,
+    priceRange,
+  } = state;
   return (
     <aside className="filter-container">
       <div className="filter-heading">
@@ -27,27 +36,117 @@ const Filter = () => {
       <div className="filter-type">
         <h3 className="filter-type-heading">Category</h3>
         <div className="filter-type-container">
-          <input type="checkbox" id="healthy" />
+          <input
+            type="checkbox"
+            id="healthy"
+            checked={healthy}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "HEALTHY",
+                    payload: { healthy: true },
+                  })
+                : dispatch({
+                    type: "HEALTHY",
+                    payload: { healthy: false },
+                  })
+            }
+          />
           <label htmlFor="healthy">Healthy</label>
         </div>
         <div className="filter-type-container">
-          <input type="checkbox" id="fast-food" />
+          <input
+            type="checkbox"
+            id="fast-food"
+            checked={fastFood}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "FAST_FOOD",
+                    payload: { fastFood: true },
+                  })
+                : dispatch({
+                    type: "FAST_FOOD",
+                    payload: { fastFood: false },
+                  })
+            }
+          />
           <label htmlFor="fast-food">Fast Food</label>
         </div>
         <div className="filter-type-container">
-          <input type="checkbox" id="indian-food" />
+          <input
+            type="checkbox"
+            id="indian-food"
+            checked={indianFood}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "INDIAN_FOOD",
+                    payload: { indianFood: true },
+                  })
+                : dispatch({
+                    type: "INDIAN_FOOD",
+                    payload: { indianFood: false },
+                  })
+            }
+          />
           <label htmlFor="indian-food">Indian Food</label>
         </div>
         <div className="filter-type-container">
-          <input type="checkbox" id="desserts" />
+          <input
+            type="checkbox"
+            id="desserts"
+            checked={desserts}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "DESSERTS",
+                    payload: { desserts: true },
+                  })
+                : dispatch({
+                    type: "DESSERTS",
+                    payload: { desserts: false },
+                  })
+            }
+          />
           <label htmlFor="desserts">Desserts</label>
         </div>
         <div className="filter-type-container">
-          <input type="checkbox" id="bakery" />
+          <input
+            type="checkbox"
+            id="bakery"
+            checked={bakery}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "BAKERY",
+                    payload: { bakery: true },
+                  })
+                : dispatch({
+                    type: "BAKERY",
+                    payload: { bakery: false },
+                  })
+            }
+          />
           <label htmlFor="bakery">Bakery</label>
         </div>
         <div className="filter-type-container">
-          <input type="checkbox" id="juices" />
+          <input
+            type="checkbox"
+            id="juices"
+            checked={juices}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "JUICES",
+                    payload: { juices: true },
+                  })
+                : dispatch({
+                    type: "JUICES",
+                    payload: { juices: false },
+                  })
+            }
+          />
           <label htmlFor="juices">Juices</label>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Product } from "../Product/Product";
 import axios from "axios";
-import { sortProducts } from "./../../../utils";
+import { sortProducts, categoryFilter } from "./../../../utils";
 import { useFilter } from "../../../context";
 
 export const Products = () => {
@@ -23,10 +23,11 @@ export const Products = () => {
 
   useEffect(() => listProducts(), []);
 
-  const sortedProducts = sortProducts(products, state.sortBy);
+  const sortedProducts = sortProducts(products, state);
+  const categorisedProducts = categoryFilter(sortedProducts, state);
   return (
     <section className="product-container">
-      {sortedProducts.map((product) => (
+      {categorisedProducts.map((product) => (
         <Product
           prodTitle={product.prodTitle}
           prodImg={product.prodImg}

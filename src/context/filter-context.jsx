@@ -6,7 +6,13 @@ const FilterContext = createContext(null);
 const FilterProvider = ({ children }) => {
   const [state, dispatch] = useReducer(filterReducer, {
     sortBy: "",
-    priceRange: 500,
+    healthy: false,
+    fastFood: false,
+    indianFood: false,
+    desserts: false,
+    bakery: false,
+    juices: false,
+    priceRange: 100,
   });
   return (
     <FilterContext.Provider value={{ state, dispatch }}>
