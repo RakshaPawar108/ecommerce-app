@@ -6,6 +6,7 @@ export const Product = ({
   badgeTitle,
   inWishlist,
   prodDiscount,
+  prodRating,
 }) => {
   return (
     <div className="card product-card">
@@ -15,6 +16,7 @@ export const Product = ({
       <div className="product-card-content">
         <h3 className="prod-title">{prodTitle}</h3>
         <h4 className="prod-category">{categoryName}</h4>
+        <h5 className="prod-rating">Ratings: {prodRating}/5</h5>
         <i className="far fa-heart overlay-icon"></i>
         {badgeTitle && <span className="prod-ecomm-badge">{badgeTitle}</span>}
         <p>

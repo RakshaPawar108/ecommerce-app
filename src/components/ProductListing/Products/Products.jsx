@@ -43,6 +43,7 @@ export const Products = () => {
           badgeTitle={product.badgeTitle}
           inWishlist={product.inWishlist}
           prodDiscount={product.prodDiscount}
+          prodRating={product.prodRating}
         />
       ))}
     </section>
