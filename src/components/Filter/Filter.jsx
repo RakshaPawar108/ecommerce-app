@@ -12,6 +12,10 @@ const Filter = () => {
     bakery,
     juices,
     priceRange,
+    rating,
+    inStock,
+    bestseller,
+    newest,
   } = state;
   return (
     <aside className="filter-container">
@@ -212,6 +216,67 @@ const Filter = () => {
         <div className="filter-type-container">
           <input type="radio" name="star-rating" />
           <label htmlFor="star-one">1⭐ and above</label>
+        </div>
+      </div>
+
+      <div className="filter-type">
+        <h3 className="filter-type-heading">Others</h3>
+        <div className="filter-type-container">
+          <input
+            type="checkbox"
+            id="in-stock"
+            checked={inStock}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "IN_STOCK",
+                    payload: { inStock: true },
+                  })
+                : dispatch({
+                    type: "IN_STOCK",
+                    payload: { inStock: false },
+                  })
+            }
+          />
+          <label htmlFor="in-stock">In Stock</label>
+        </div>
+        <div className="filter-type-container">
+          <input
+            type="checkbox"
+            id="bestseller"
+            checked={bestseller}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "BESTSELLER",
+                    payload: { bestseller: true },
+                  })
+                : dispatch({
+                    type: "BESTSELLER",
+                    payload: { bestseller: false },
+                  })
+            }
+          />
+          <label htmlFor="bestseller">Bestseller</label>
+        </div>
+        <div className="filter-type-container">
+          <input
+            type="checkbox"
+            id="newest"
+            checked={newest}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "NEWEST",
+                    payload: { newest: true },
+                  })
+                : dispatch({
+                    type: "NEWEST",
+                    payload: { newest: false },
+                  })
+            }
+          />
+          <label htmlFor="newest">Newest</label>
         </div>
       </div>
     </aside>

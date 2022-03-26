@@ -13,6 +13,10 @@ const FilterProvider = ({ children }) => {
     bakery: false,
     juices: false,
     priceRange: 1000,
+    rating: "",
+    inStock: false,
+    bestseller: false,
+    newest: false,
   });
   return (
     <FilterContext.Provider value={{ state, dispatch }}>

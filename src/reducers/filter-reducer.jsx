@@ -30,6 +30,18 @@ const filterReducer = (state, action) => {
     case "PRICE_RANGE":
       return { ...state, priceRange: action.payload.priceRange };
 
+    case "RATINGS":
+      return { ...state, rating: action.payload.rating };
+
+    case "IN_STOCK":
+      return { ...state, inStock: action.payload.inStock };
+
+    case "BESTSELLER":
+      return { ...state, bestseller: action.payload.bestseller };
+
+    case "NEWEST":
+      return { ...state, newest: action.payload.newest };
+
     case "CLEAR_FILTER":
       return {
         sortBy: "",
@@ -40,6 +52,10 @@ const filterReducer = (state, action) => {
         desserts: false,
         bakery: false,
         juices: false,
+        rating: "",
+        inStock: false,
+        bestseller: false,
+        newest: false,
       };
 
     default:
