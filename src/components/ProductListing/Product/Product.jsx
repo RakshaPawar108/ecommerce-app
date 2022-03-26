@@ -15,14 +15,26 @@ export const Product = ({
       <div className="product-card-content">
         <h3 className="prod-title">{prodTitle}</h3>
         <h4 className="prod-category">{categoryName}</h4>
-        <i className="fas fa-heart overlay-icon"></i>
-        <span className="prod-ecomm-badge">{badgeTitle}</span>
+        <i className="far fa-heart overlay-icon"></i>
+        {badgeTitle && <span className="prod-ecomm-badge">{badgeTitle}</span>}
         <p>
-          <strong>₹ {price}</strong>{" "}
-          <small>
-            <s>₹ 2999</s>
-          </small>
-          <small className="card-discount">({prodDiscount} OFF)</small>
+          {prodDiscount ? (
+            <strong>
+              ₹ {(price - (prodDiscount / 100) * price).toFixed(0)}
+            </strong>
+          ) : (
+            <strong>₹ {price}</strong>
+          )}{" "}
+          {prodDiscount ? (
+            <small>
+              <s>₹ {price}</s>
+            </small>
+          ) : (
+            ""
+          )}
+          {prodDiscount ? (
+            <small className="card-discount">({prodDiscount}% OFF)</small>
+          ) : null}
         </p>
         <a href="/" className="prod-action-btn">
           Move to Cart
