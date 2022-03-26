@@ -29,11 +29,9 @@ export const Product = ({
           )}{" "}
           {prodDiscount ? (
             <small>
-              <s>₹ {price}</s>
+              <s>₹ {String(price)}</s>
             </small>
-          ) : (
-            ""
-          )}
+          ) : null}
           {prodDiscount ? (
             <small className="card-discount">({prodDiscount}% OFF)</small>
           ) : null}
