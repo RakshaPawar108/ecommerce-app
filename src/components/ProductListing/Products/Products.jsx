@@ -6,6 +6,7 @@ import {
   categoryFilter,
   priceRangeFilter,
   otherFilters,
+  ratingFilter,
 } from "./../../../utils";
 import { useFilter } from "../../../context";
 
@@ -31,7 +32,8 @@ export const Products = () => {
   const priceFilteredProducts = priceRangeFilter(products, state);
   const categorizedProducts = categoryFilter(priceFilteredProducts, state);
   const otherFilteredProducts = otherFilters(categorizedProducts, state);
-  const sortedProducts = sortProducts(otherFilteredProducts, state);
+  const ratingFilteredProducts = ratingFilter(otherFilteredProducts, state);
+  const sortedProducts = sortProducts(ratingFilteredProducts, state);
 
   return (
     <section className="product-container">

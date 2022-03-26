@@ -202,19 +202,63 @@ const Filter = () => {
       <div className="filter-type">
         <h3 className="filter-type-heading">Ratings</h3>
         <div className="filter-type-container">
-          <input type="radio" name="star-rating" />
+          <input
+            type="radio"
+            name="star-rating"
+            value="4"
+            checked={rating === "4"}
+            onChange={(event) =>
+              dispatch({
+                type: "RATINGS",
+                payload: { rating: event.target.value },
+              })
+            }
+          />
           <label htmlFor="star-four">4⭐ and above</label>
         </div>
         <div className="filter-type-container">
-          <input type="radio" name="star-rating" />
+          <input
+            type="radio"
+            name="star-rating"
+            value="3"
+            checked={rating === "3"}
+            onChange={(event) =>
+              dispatch({
+                type: "RATINGS",
+                payload: { rating: event.target.value },
+              })
+            }
+          />
           <label htmlFor="star-three">3⭐ and above</label>
         </div>
         <div className="filter-type-container">
-          <input type="radio" name="star-rating" />
+          <input
+            type="radio"
+            name="star-rating"
+            value="2"
+            checked={rating === "2"}
+            onChange={(event) =>
+              dispatch({
+                type: "RATINGS",
+                payload: { rating: event.target.value },
+              })
+            }
+          />
           <label htmlFor="star-two">2⭐ and above</label>
         </div>
         <div className="filter-type-container">
-          <input type="radio" name="star-rating" />
+          <input
+            type="radio"
+            name="star-rating"
+            value="1"
+            checked={rating === "1"}
+            onChange={(event) =>
+              dispatch({
+                type: "RATINGS",
+                payload: { rating: event.target.value },
+              })
+            }
+          />
           <label htmlFor="star-one">1⭐ and above</label>
         </div>
       </div>
