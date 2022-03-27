@@ -57,6 +57,13 @@
   display: none;
 }
 
+.auth-name input:not(:placeholder-shown) ~ label,
+.auth-email input:not(:placeholder-shown) ~ label,
+.auth-password input:not(:placeholder-shown) ~ label,
+.auth-password-confirm input:not(:placeholder-shown) ~ label {
+  top: -15px;
+}
+
 .btn-signup,
 .btn-login {
   width: 100%;
