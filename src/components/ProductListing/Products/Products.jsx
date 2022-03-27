@@ -1,9 +1,18 @@
 import { useState, useEffect } from "react";
 import { Product } from "../Product/Product";
 import axios from "axios";
+import {
+  sortProducts,
+  categoryFilter,
+  priceRangeFilter,
+  otherFilters,
+  ratingFilter,
+} from "./../../../utils";
+import { useFilter } from "../../../context";
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
+  const { state } = useFilter();
 
   const listProducts = async () => {
     try {
@@ -19,10 +28,18 @@ export const Products = () => {
   };
 
   useEffect(() => listProducts(), []);
+
+  const priceFilteredProducts = priceRangeFilter(products, state);
+  const categorizedProducts = categoryFilter(priceFilteredProducts, state);
+  const otherFilteredProducts = otherFilters(categorizedProducts, state);
+  const ratingFilteredProducts = ratingFilter(otherFilteredProducts, state);
+  const sortedProducts = sortProducts(ratingFilteredProducts, state);
+
   return (
     <section className="product-container">
-      {products.map((product) => (
+      {sortedProducts.map((product) => (
         <Product
+          key={product._id}
           prodTitle={product.prodTitle}
           prodImg={product.prodImg}
           price={product.price}
@@ -30,6 +47,7 @@ export const Products = () => {
           badgeTitle={product.badgeTitle}
           inWishlist={product.inWishlist}
           prodDiscount={product.prodDiscount}
+          prodRating={product.prodRating}
         />
       ))}
     </section>

@@ -30,6 +30,11 @@
   width: 100%;
 }
 
+.prod-rating {
+  font-size: 1.5rem;
+  color: var(--dark-gray);
+}
+
 @media only screen and (max-width: 1024px) {
   .filter-container {
     display: none;

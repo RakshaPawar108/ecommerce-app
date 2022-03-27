@@ -1,74 +1,326 @@
 import "./Filter.css";
+import { useFilter } from "./../../context/";
 
 const Filter = () => {
+  const { state, dispatch } = useFilter();
+  const {
+    sortBy,
+    healthy,
+    fastFood,
+    indianFood,
+    desserts,
+    bakery,
+    juices,
+    priceRange,
+    rating,
+    inStock,
+    bestseller,
+    newest,
+  } = state;
   return (
     <aside className="filter-container">
       <div className="filter-heading">
         <h2 className="main-heading">Filters</h2>
-        <button className="filter-clear-btn">Clear</button>
+        <button
+          className="filter-clear-btn"
+          onClick={() => dispatch({ type: "CLEAR_FILTER", payload: {} })}
+        >
+          Clear
+        </button>
       </div>
 
       <div className="filter-type">
         <h3 className="filter-type-heading">Price</h3>
         <div className="filter-type-container">
-          <label htmlFor="cost-slider">Rs.0 - Rs.1000</label>
-          <input type="range" id="cost-slider" min="0" max="1000" value="500" />
+          <label htmlFor="cost-slider">₹0 - ₹{priceRange}</label>
+          <input
+            type="range"
+            id="cost-slider"
+            min="0"
+            max="1000"
+            value={priceRange}
+            onChange={(event) =>
+              dispatch({
+                type: "PRICE_RANGE",
+                payload: { priceRange: event.target.value },
+              })
+            }
+          />
         </div>
       </div>
 
       <div className="filter-type">
         <h3 className="filter-type-heading">Category</h3>
         <div className="filter-type-container">
-          <input type="checkbox" id="healthy" />
+          <input
+            type="checkbox"
+            id="healthy"
+            checked={healthy}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "HEALTHY",
+                    payload: { healthy: true },
+                  })
+                : dispatch({
+                    type: "HEALTHY",
+                    payload: { healthy: false },
+                  })
+            }
+          />
           <label htmlFor="healthy">Healthy</label>
         </div>
         <div className="filter-type-container">
-          <input type="checkbox" id="fast-food" />
+          <input
+            type="checkbox"
+            id="fast-food"
+            checked={fastFood}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "FAST_FOOD",
+                    payload: { fastFood: true },
+                  })
+                : dispatch({
+                    type: "FAST_FOOD",
+                    payload: { fastFood: false },
+                  })
+            }
+          />
           <label htmlFor="fast-food">Fast Food</label>
         </div>
         <div className="filter-type-container">
-          <input type="checkbox" id="veg" />
-          <label htmlFor="veg">Vegetarian</label>
+          <input
+            type="checkbox"
+            id="indian-food"
+            checked={indianFood}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "INDIAN_FOOD",
+                    payload: { indianFood: true },
+                  })
+                : dispatch({
+                    type: "INDIAN_FOOD",
+                    payload: { indianFood: false },
+                  })
+            }
+          />
+          <label htmlFor="indian-food">Indian Food</label>
         </div>
         <div className="filter-type-container">
-          <input type="checkbox" id="non-veg" />
-          <label htmlFor="non-veg">Non Vegetarian</label>
+          <input
+            type="checkbox"
+            id="desserts"
+            checked={desserts}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "DESSERTS",
+                    payload: { desserts: true },
+                  })
+                : dispatch({
+                    type: "DESSERTS",
+                    payload: { desserts: false },
+                  })
+            }
+          />
+          <label htmlFor="desserts">Desserts</label>
         </div>
         <div className="filter-type-container">
-          <input type="checkbox" id="continental" />
-          <label htmlFor="continental">Continental</label>
+          <input
+            type="checkbox"
+            id="bakery"
+            checked={bakery}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "BAKERY",
+                    payload: { bakery: true },
+                  })
+                : dispatch({
+                    type: "BAKERY",
+                    payload: { bakery: false },
+                  })
+            }
+          />
+          <label htmlFor="bakery">Bakery</label>
         </div>
-      </div>
-
-      <div className="filter-type">
-        <h3 className="filter-type-heading">Ratings</h3>
         <div className="filter-type-container">
-          <input type="radio" name="star-rating" />
-          <label htmlFor="star-four">4⭐ and above</label>
-        </div>
-        <div className="filter-type-container">
-          <input type="radio" name="star-rating" />
-          <label htmlFor="star-three">3⭐ and above</label>
-        </div>
-        <div className="filter-type-container">
-          <input type="radio" name="star-rating" />
-          <label htmlFor="star-two">2⭐ and above</label>
-        </div>
-        <div className="filter-type-container">
-          <input type="radio" name="star-rating" />
-          <label htmlFor="star-one">1⭐ and above</label>
+          <input
+            type="checkbox"
+            id="juices"
+            checked={juices}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "JUICES",
+                    payload: { juices: true },
+                  })
+                : dispatch({
+                    type: "JUICES",
+                    payload: { juices: false },
+                  })
+            }
+          />
+          <label htmlFor="juices">Juices</label>
         </div>
       </div>
 
       <div className="filter-type">
         <h3 className="filter-type-heading">Sort by</h3>
         <div className="filter-type-container">
-          <input type="radio" id="low-to-high" name="sort-by" />
+          <input
+            type="radio"
+            id="low-to-high"
+            name="sort-by"
+            checked={sortBy === "LOW_TO_HIGH"}
+            onChange={() =>
+              dispatch({
+                type: "LOW_TO_HIGH",
+              })
+            }
+          />
           <label htmlFor="low-to-high">Price - Low to High</label>
         </div>
         <div className="filter-type-container">
-          <input type="radio" id="high-to-low" name="sort-by" />
+          <input
+            type="radio"
+            id="high-to-low"
+            name="sort-by"
+            checked={sortBy === "HIGH_TO_LOW"}
+            onChange={() =>
+              dispatch({
+                type: "HIGH_TO_LOW",
+              })
+            }
+          />
           <label htmlFor="high-to-low">Price - High to Low</label>
+        </div>
+      </div>
+
+      <div className="filter-type">
+        <h3 className="filter-type-heading">Ratings</h3>
+        <div className="filter-type-container">
+          <input
+            type="radio"
+            name="star-rating"
+            value="4"
+            checked={rating === "4"}
+            onChange={(event) =>
+              dispatch({
+                type: "RATINGS",
+                payload: { rating: event.target.value },
+              })
+            }
+          />
+          <label htmlFor="star-four">4⭐ and above</label>
+        </div>
+        <div className="filter-type-container">
+          <input
+            type="radio"
+            name="star-rating"
+            value="3"
+            checked={rating === "3"}
+            onChange={(event) =>
+              dispatch({
+                type: "RATINGS",
+                payload: { rating: event.target.value },
+              })
+            }
+          />
+          <label htmlFor="star-three">3⭐ and above</label>
+        </div>
+        <div className="filter-type-container">
+          <input
+            type="radio"
+            name="star-rating"
+            value="2"
+            checked={rating === "2"}
+            onChange={(event) =>
+              dispatch({
+                type: "RATINGS",
+                payload: { rating: event.target.value },
+              })
+            }
+          />
+          <label htmlFor="star-two">2⭐ and above</label>
+        </div>
+        <div className="filter-type-container">
+          <input
+            type="radio"
+            name="star-rating"
+            value="1"
+            checked={rating === "1"}
+            onChange={(event) =>
+              dispatch({
+                type: "RATINGS",
+                payload: { rating: event.target.value },
+              })
+            }
+          />
+          <label htmlFor="star-one">1⭐ and above</label>
+        </div>
+      </div>
+
+      <div className="filter-type">
+        <h3 className="filter-type-heading">Others</h3>
+        <div className="filter-type-container">
+          <input
+            type="checkbox"
+            id="in-stock"
+            checked={inStock}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "IN_STOCK",
+                    payload: { inStock: true },
+                  })
+                : dispatch({
+                    type: "IN_STOCK",
+                    payload: { inStock: false },
+                  })
+            }
+          />
+          <label htmlFor="in-stock">In Stock</label>
+        </div>
+        <div className="filter-type-container">
+          <input
+            type="checkbox"
+            id="bestseller"
+            checked={bestseller}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "BESTSELLER",
+                    payload: { bestseller: true },
+                  })
+                : dispatch({
+                    type: "BESTSELLER",
+                    payload: { bestseller: false },
+                  })
+            }
+          />
+          <label htmlFor="bestseller">Bestseller</label>
+        </div>
+        <div className="filter-type-container">
+          <input
+            type="checkbox"
+            id="newest"
+            checked={newest}
+            onChange={(event) =>
+              event.target.checked
+                ? dispatch({
+                    type: "NEWEST",
+                    payload: { newest: true },
+                  })
+                : dispatch({
+                    type: "NEWEST",
+                    payload: { newest: false },
+                  })
+            }
+          />
+          <label htmlFor="newest">Newest</label>
         </div>
       </div>
     </aside>
