@@ -1,7 +1,9 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context";
 
 const Navbar = () => {
+  const { state } = useAuth();
   return (
     <>
       <input type="checkbox" id="check" />
@@ -17,9 +19,13 @@ const Navbar = () => {
 
         <ul className="navigation-items">
           <li className="navigation-item">
-            <button className="button">
-              <Link to="/login">Login</Link>
-            </button>
+            {state.token && state.user ? (
+              <Link to="/user">{state.user.firstName}</Link>
+            ) : (
+              <Link to='/login'>
+                Login
+              </Link>
+            )}
           </li>
           <li className="navigation-item">
             <Link to="/products">Products</Link>
