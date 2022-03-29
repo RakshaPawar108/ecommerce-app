@@ -7,10 +7,10 @@ const provideAuth = () => {
       if (response.status === 201) {
         localStorage.setItem("token", response.data.encodedToken);
         localStorage.setItem("user", JSON.stringify(response.data.createdUser));
-        return response;
       } else {
         throw new Error();
       }
+      return response;
     } catch (err) {
       console.log(err);
     }
@@ -22,10 +22,10 @@ const provideAuth = () => {
       if (response.status === 200) {
         localStorage.setItem("token", response.data.encodedToken);
         localStorage.setItem("user", JSON.stringify(response.data.foundUser));
-        return response;
       } else {
         throw new Error();
       }
+      return response;
     } catch (err) {
       console.log(err);
     }

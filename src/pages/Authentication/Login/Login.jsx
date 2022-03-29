@@ -2,18 +2,29 @@ import "./../Auth.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../../context";
+import { provideAuth } from "../../../services";
 
 export const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
-  const { logIn } = useAuth();
+  const { dispatch } = useAuth();
+  const { logIn } = provideAuth();
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
       let response = await logIn(user);
-      if (response.data.foundUser) {
-        navigate("/products");
+      if (response.status === 200) {
+        dispatch({
+          type: "LOGIN",
+          payload: {
+            user: response.data.foundUser,
+            token: response.data.encodedToken,
+          },
+        });
+
+        alert("Logged In successfully");
+        navigate("/");
       }
     } catch (err) {
       console.log(err);
