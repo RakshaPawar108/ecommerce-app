@@ -1,10 +1,16 @@
 import axios from "axios";
 
 const provideAuth = () => {
-  const signUp = (user) => {
+  const signUp = async (user) => {
     try {
-      const response = axios.post("/api/auth/signup", user);
-      console.log(response);
+      const response = await axios.post("/api/auth/signup", user);
+      if (response.status === 201) {
+        localStorage.setItem("token", response.data.encodedToken);
+        localStorage.setItem("user", JSON.stringify(response.data.createdUser));
+        return response
+      } else {
+        throw new Error();
+      }
     } catch (err) {
       console.log(err);
     }
