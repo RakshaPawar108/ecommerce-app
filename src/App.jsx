@@ -9,6 +9,7 @@ import {
   Logout,
   ProductListing,
   Wishlist,
+  User
 } from "./pages";
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/products" element={<ProductListing />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/mockman" element={<Mockman />}></Route>
+        <Route path="/user" element={<User />} />
+        <Route path="/mockman" element={<Mockman />} />
       </Routes>
       <Footer />
     </div>
