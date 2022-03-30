@@ -1,21 +1,74 @@
 import "./../Auth.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useAuth } from "../../../context";
+import { provideAuth } from "../../../services";
 
 export const Login = () => {
+  const [user, setUser] = useState({ email: "", password: "" });
+  const { authDispatch } = useAuth();
+  const { logIn } = provideAuth();
+  const navigate = useNavigate();
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      let response = await logIn(user);
+      if (response.status === 200) {
+        authDispatch({
+          type: "LOGIN",
+          payload: {
+            user: response.data.foundUser,
+            token: response.data.encodedToken,
+          },
+        });
+
+        alert("Logged In successfully");
+        navigate("/");
+      } else {
+        alert("ERROR IN LOGGING IN!");
+      }
+    } catch (err) {}
+  };
+
+  const guestLoginHandler = (e) => {
+    e.preventDefault();
+    setUser(() => ({
+      email: "adarshbalika@gmail.com",
+      password: "adarshbalika",
+    }));
+  };
+
   return (
     <main className="main-wrapper">
       <form className="auth-container">
         <h1 className="auth-title">Login</h1>
         <p className="auth-subtitle">Please enter your email and password</p>
         <div className="input-container standard auth-email">
-          <input type="email" />
-          <label>Enter Your Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder=" "
+            onChange={(e) => {
+              setUser({ ...user, email: e.target.value });
+            }}
+            value={user.email}
+          />
+          <label htmlFor="email">Enter Your Email</label>
           <small>Enter Valid Email</small>
         </div>
 
         <div className="input-container standard auth-password">
-          <input type="password" />
-          <label>Enter Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder=" "
+            onChange={(e) => {
+              setUser({ ...user, password: e.target.value });
+            }}
+            value={user.password}
+          />
+          <label htmlFor="password">Enter Password</label>
           <small>Enter Valid Password</small>
         </div>
 
@@ -32,8 +85,19 @@ export const Login = () => {
           </p>
         </div>
 
-        <button type="submit" className="button btn-info btn-signup">
+        <button
+          type="submit"
+          className="button btn-info btn-signup"
+          onClick={submitHandler}
+        >
           Login
+        </button>
+        <button
+          type="submit"
+          className="button btn-info btn-signup"
+          onClick={guestLoginHandler}
+        >
+          Login with Guest Credentials
         </button>
         <p className="auth-link">
           Don't have an account?
