@@ -19,23 +19,35 @@ export const Signup = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    try {
-      let response = await signUp(user);
-      if (response.status === 201) {
-        dispatch({
-          type: "SIGN_UP",
-          payload: {
-            user: response.data.createdUser,
-            token: response.data.encodedToken,
-          },
-        });
+    if(user.firstName && user.lastName && user.email && user.password && user.confirmPassword){
+      if(user.password === user.confirmPassword){
+        try {
+          let response = await signUp(user);
+          if (response.status === 201) {
+            dispatch({
+              type: "SIGN_UP",
+              payload: {
+                user: response.data.createdUser,
+                token: response.data.encodedToken,
+              },
+            });
 
-        alert("Signed Up successfully");
-        navigate("/");
+            alert("Signed Up successfully");
+            navigate("/");
+          }
+        } catch (err) {
+          console.log(err);
+        }
+
+      } else {
+        alert("Password and Confirm Password fields should be same")
       }
-    } catch (err) {
-      console.log(err);
+      
+
+    } else {
+      alert("Enter all fields to sign up");
     }
+    
   };
   return (
     <main className="main-wrapper">
