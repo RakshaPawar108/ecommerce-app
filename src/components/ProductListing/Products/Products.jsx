@@ -38,10 +38,10 @@ export const Products = () => {
       const response = await addToCartService(product, authState.token);
       if (response.status === 201) {
         cartDispatch({ type: "ADD_TO_CART", payload: response.data.cart });
-      } else {
-        alert("Please log in to start adding items to cart");
-        navigate("/login");
       }
+    } else {
+      alert("Please log in to start adding items to cart");
+      navigate("/login");
     }
   };
 
