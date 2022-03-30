@@ -28,9 +28,7 @@ export const Login = () => {
       } else {
         alert("ERROR IN LOGGING IN!");
       }
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   const guestLoginHandler = (e) => {

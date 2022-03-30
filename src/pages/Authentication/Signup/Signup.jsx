@@ -41,9 +41,7 @@ export const Signup = () => {
             alert("Signed Up successfully");
             navigate("/");
           }
-        } catch (err) {
-          console.log(err);
-        }
+        } catch (err) {}
       } else {
         alert("Password and Confirm Password fields should be same");
       }

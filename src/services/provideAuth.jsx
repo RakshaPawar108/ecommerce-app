@@ -12,7 +12,7 @@ const provideAuth = () => {
       }
       return response;
     } catch (err) {
-      console.log(err);
+      
     }
   };
 
