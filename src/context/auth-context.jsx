@@ -5,7 +5,7 @@ import { authReducer } from "../reducers";
 const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(authReducer, {
+  const [authState, authDispatch] = useReducer(authReducer, {
     user: null,
     token: null,
   });
@@ -13,11 +13,14 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const user = JSON.parse(localStorage.getItem("user"));
-    dispatch({ type: "CHECK_INITIAL", payload: { user: user, token: token } });
+    authDispatch({
+      type: "CHECK_INITIAL",
+      payload: { user: user, token: token },
+    });
   }, []);
 
   return (
-    <AuthContext.Provider value={{ state, dispatch }}>
+    <AuthContext.Provider value={{ authState, authDispatch }}>
       {children}
     </AuthContext.Provider>
   );

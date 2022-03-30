@@ -2,7 +2,7 @@ import "./../Auth.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "./../../../context";
-import { provideAuth } from "../../../services"
+import { provideAuth } from "../../../services";
 
 export const Signup = () => {
   const [user, setUser] = useState({
@@ -13,18 +13,24 @@ export const Signup = () => {
     confirmPassword: "",
   });
 
-  const {signUp} = provideAuth();
-  const {dispatch} = useAuth();
+  const { signUp } = provideAuth();
+  const { authDispatch } = useAuth();
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if(user.firstName && user.lastName && user.email && user.password && user.confirmPassword){
-      if(user.password === user.confirmPassword){
+    if (
+      user.firstName &&
+      user.lastName &&
+      user.email &&
+      user.password &&
+      user.confirmPassword
+    ) {
+      if (user.password === user.confirmPassword) {
         try {
           let response = await signUp(user);
           if (response.status === 201) {
-            dispatch({
+            authDispatch({
               type: "SIGN_UP",
               payload: {
                 user: response.data.createdUser,
@@ -38,16 +44,12 @@ export const Signup = () => {
         } catch (err) {
           console.log(err);
         }
-
       } else {
-        alert("Password and Confirm Password fields should be same")
+        alert("Password and Confirm Password fields should be same");
       }
-      
-
     } else {
       alert("Enter all fields to sign up");
     }
-    
   };
   return (
     <main className="main-wrapper">

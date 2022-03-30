@@ -6,7 +6,7 @@ import { provideAuth } from "../../../services";
 
 export const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
-  const { dispatch } = useAuth();
+  const { authDispatch } = useAuth();
   const { logIn } = provideAuth();
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ export const Login = () => {
     try {
       let response = await logIn(user);
       if (response.status === 200) {
-        dispatch({
+        authDispatch({
           type: "LOGIN",
           payload: {
             user: response.data.foundUser,

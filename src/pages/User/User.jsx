@@ -3,11 +3,11 @@ import { useAuth } from "../../context";
 import "./User.css";
 
 export const User = () => {
-  const { dispatch } = useAuth();
+  const { authDispatch } = useAuth();
   const logoutHandler = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
-    dispatch({ type: "LOGOUT" });
+    authDispatch({ type: "LOGOUT" });
   };
   return (
     <div>
