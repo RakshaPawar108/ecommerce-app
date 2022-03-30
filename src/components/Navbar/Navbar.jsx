@@ -38,7 +38,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="navigation-item">
-            <Link to="/cart">
+            <Link to={authState.token ? "/cart" : "/login"}>
               <div className="icons-container badge">
                 <i className="fas fa-shopping-cart badge-icon"></i>
                 <span className="icon-badge">5</span>
