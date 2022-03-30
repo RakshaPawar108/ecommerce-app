@@ -31,6 +31,14 @@ export const Login = () => {
     }
   };
 
+  const guestLoginHandler = (e) => {
+    e.preventDefault();
+    setUser(() => ({
+      email: "adarshbalika@gmail.com",
+      password: "adarshbalika",
+    }));
+  };
+
   return (
     <main className="main-wrapper">
       <form className="auth-container">
@@ -83,6 +91,13 @@ export const Login = () => {
           onClick={submitHandler}
         >
           Login
+        </button>
+        <button
+          type="submit"
+          className="button btn-info btn-signup"
+          onClick={guestLoginHandler}
+        >
+          Login with Guest Credentials
         </button>
         <p className="auth-link">
           Don't have an account?
