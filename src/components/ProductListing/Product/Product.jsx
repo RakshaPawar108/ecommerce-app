@@ -1,4 +1,5 @@
 export const Product = ({
+  _id,
   prodTitle,
   prodImg,
   price,
@@ -7,6 +8,7 @@ export const Product = ({
   inWishlist,
   prodDiscount,
   prodRating,
+  addToCart,
 }) => {
   return (
     <div className="card product-card">
@@ -36,9 +38,9 @@ export const Product = ({
             <small className="card-discount">({prodDiscount}% OFF)</small>
           ) : null}
         </p>
-        <a href="/" className="prod-action-btn">
+        <button onClick={addToCart} className="prod-action-btn">
           Move to Cart
-        </a>
+        </button>
       </div>
     </div>
   );

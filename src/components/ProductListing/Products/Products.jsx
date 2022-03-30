@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Product } from "../Product/Product";
 import axios from "axios";
 import {
@@ -8,11 +9,15 @@ import {
   otherFilters,
   ratingFilter,
 } from "./../../../utils";
-import { useFilter } from "../../../context";
+import { useAuth, useFilter, useCart } from "../../../context";
+import { addToCartService } from "../../../services";
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
   const { state } = useFilter();
+  const { authState } = useAuth();
+  const { cartState, cartDispatch } = useCart();
+  const navigate = useNavigate();
 
   const listProducts = async () => {
     try {
@@ -24,6 +29,19 @@ export const Products = () => {
       }
     } catch (e) {
       console.log(e);
+    }
+  };
+
+  const addToCartHandler = async (_id) => {
+    const product = products.find((product) => product._id === _id);
+    if (authState.token) {
+      const response = await addToCartService(product, authState.token);
+      if (response.status === 201) {
+        cartDispatch({ type: "ADD_TO_CART", payload: response.data.cart });
+      } else {
+        alert("Please log in to start adding items to cart");
+        navigate("/login");
+      }
     }
   };
 
@@ -48,6 +66,7 @@ export const Products = () => {
           inWishlist={product.inWishlist}
           prodDiscount={product.prodDiscount}
           prodRating={product.prodRating}
+          addToCart={addToCartHandler}
         />
       ))}
     </section>
