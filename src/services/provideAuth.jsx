@@ -11,9 +11,7 @@ const provideAuth = () => {
         throw new Error();
       }
       return response;
-    } catch (err) {
-      
-    }
+    } catch (err) {}
   };
 
   const logIn = async (user) => {
