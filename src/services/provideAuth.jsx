@@ -22,12 +22,10 @@ const provideAuth = () => {
       if (response.status === 200) {
         localStorage.setItem("token", response.data.encodedToken);
         localStorage.setItem("user", JSON.stringify(response.data.foundUser));
-      } else {
-        throw new Error();
       }
       return response;
     } catch (err) {
-      console.log(err);
+      return err;
     }
   };
 

@@ -25,6 +25,8 @@ export const Login = () => {
 
         alert("Logged In successfully");
         navigate("/");
+      } else {
+        alert("ERROR IN LOGGING IN!");
       }
     } catch (err) {
       console.log(err);
