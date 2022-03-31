@@ -6,11 +6,13 @@ import "./Cart.css";
 
 export const Cart = () => {
   const { cartState, cartDispatch } = useCart();
-  const { authState } = useAuth();
+  const {
+    authState: { token },
+  } = useAuth();
 
   const getInitialCart = async () => {
     try {
-      const response = await fetchInitialCartService(authState.token);
+      const response = await fetchInitialCartService(token);
       if (response.status === 200) {
         cartDispatch({ type: "FETCH_INITIAL", payload: response.data.cart });
       } else {
@@ -21,7 +23,7 @@ export const Cart = () => {
 
   useEffect(() => {
     getInitialCart();
-  },);
+  });
 
   return (
     <main className="cart-wrapper">

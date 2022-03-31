@@ -15,7 +15,9 @@ import { addToCartService } from "../../../services";
 export const Products = () => {
   const [products, setProducts] = useState([]);
   const { state } = useFilter();
-  const { authState } = useAuth();
+  const {
+    authState: { token },
+  } = useAuth();
   const { cartState, cartDispatch } = useCart();
   const navigate = useNavigate();
   const [disableBtn, setDisableBtn] = useState(false);
@@ -36,8 +38,8 @@ export const Products = () => {
   const addToCartHandler = async (_id) => {
     setDisableBtn(true);
     const product = products.find((product) => product._id === _id);
-    if (authState.token) {
-      const response = await addToCartService(product, authState.token);
+    if (token) {
+      const response = await addToCartService(product, token);
       if (response.status === 201) {
         cartDispatch({ type: "ADD_TO_CART", payload: response.data.cart });
         setDisableBtn(false);

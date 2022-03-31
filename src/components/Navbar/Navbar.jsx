@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { useAuth, useCart } from "../../context";
 
 const Navbar = () => {
-  const { authState } = useAuth();
+  const {
+    authState: { token, user },
+  } = useAuth();
   const { cartState } = useCart();
   return (
     <>
@@ -20,8 +22,8 @@ const Navbar = () => {
 
         <ul className="navigation-items">
           <li className="navigation-item">
-            {authState.token && authState.user ? (
-              <Link to="/user">{authState.user.firstName}</Link>
+            {token && user ? (
+              <Link to="/user">{user.firstName}</Link>
             ) : (
               <Link to="/login">Login</Link>
             )}
@@ -39,7 +41,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="navigation-item">
-            <Link to={authState.token ? "/cart" : "/login"}>
+            <Link to={token ? "/cart" : "/login"}>
               <div className="icons-container badge">
                 <i className="fas fa-shopping-cart badge-icon"></i>
                 {cartState.cart.length > 0 ? (

@@ -5,11 +5,13 @@ import { removeFromCartService, updateCartService } from "../../../services";
 
 export const CartItems = () => {
   const { cartState, cartDispatch } = useCart();
-  const { authState } = useAuth();
+  const {
+    authState: { token },
+  } = useAuth();
 
   const removeFromCartHandler = async (_id) => {
-    if (authState.token) {
-      const response = await removeFromCartService(_id, authState.token);
+    if (token) {
+      const response = await removeFromCartService(_id, token);
       if (response.status === 200) {
         cartDispatch({ type: "REMOVE_FROM_CART", payload: response.data.cart });
       }
@@ -19,12 +21,8 @@ export const CartItems = () => {
   };
 
   const updateCartHandler = async (_id, actionType) => {
-    if (authState.token) {
-      const response = await updateCartService(
-        _id,
-        actionType,
-        authState.token
-      );
+    if (token) {
+      const response = await updateCartService(_id, actionType, token);
       if (response.status === 200) {
         cartDispatch({ type: "UPDATE_CART", payload: response.data.cart });
       }
