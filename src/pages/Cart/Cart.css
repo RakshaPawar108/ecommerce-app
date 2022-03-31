@@ -1,6 +1,7 @@
 .cart-wrapper {
   width: 90%;
   margin: 5rem auto 7rem auto;
+  flex-grow: 1;
 }
 
 .cart-heading {
@@ -15,7 +16,7 @@
 
 .cart-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
@@ -64,6 +65,7 @@
 
 .cart-price-container .ecomm-billing-card {
   width: 100%;
+  margin-top: 3.2rem;
 }
 
 .ecomm-billing-card .billing-card-title {

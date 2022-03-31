@@ -1,9 +1,12 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context";
+import { useAuth, useCart } from "../../context";
 
 const Navbar = () => {
-  const { authState } = useAuth();
+  const {
+    authState: { token, user },
+  } = useAuth();
+  const { cartState } = useCart();
   return (
     <>
       <input type="checkbox" id="check" />
@@ -19,8 +22,8 @@ const Navbar = () => {
 
         <ul className="navigation-items">
           <li className="navigation-item">
-            {authState.token && authState.user ? (
-              <Link to="/user">{authState.user.firstName}</Link>
+            {token && user ? (
+              <Link to="/user">{user.firstName}</Link>
             ) : (
               <Link to="/login">Login</Link>
             )}
@@ -38,10 +41,14 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="navigation-item">
-            <Link to="/cart">
+            <Link to={token ? "/cart" : "/login"}>
               <div className="icons-container badge">
                 <i className="fas fa-shopping-cart badge-icon"></i>
-                <span className="icon-badge">5</span>
+                {cartState.cart.length > 0 ? (
+                  <span className="icon-badge">{cartState.cart.length}</span>
+                ) : (
+                  <span className="icon-badge">0</span>
+                )}
               </div>
               <span>Cart</span>
             </Link>
