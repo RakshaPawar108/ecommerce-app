@@ -6,6 +6,7 @@ export const CartItem = ({
   categoryName,
   inWishlist,
   prodDiscount,
+  removeFromCart
 }) => {
   const discountedPrice = (price - (prodDiscount / 100) * price).toFixed(0);
   return (
@@ -43,7 +44,7 @@ export const CartItem = ({
         <button className="prod-action-btn wishlist-btn">
           Move to Wishlist
         </button>
-        <button className="prod-action-btn remove-btn">Remove from Cart</button>
+        <button onClick={()=>removeFromCart(_id)} className="prod-action-btn remove-btn">Remove from Cart</button>
       </div>
     </div>
   );
