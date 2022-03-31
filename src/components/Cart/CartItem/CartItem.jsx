@@ -6,9 +6,12 @@ export const CartItem = ({
   categoryName,
   inWishlist,
   prodDiscount,
-  removeFromCart
+  prodQuantity,
+  removeFromCart,
+  updateCart,
 }) => {
   const discountedPrice = (price - (prodDiscount / 100) * price).toFixed(0);
+
   return (
     <div className="ecomm-horizontal-card">
       <div className="image-container">
@@ -33,18 +36,33 @@ export const CartItem = ({
           ) : null}
         </h4>
         <div className="num-products">
-          <button className="add-sub-btn decrease-btn">
+          <button
+            className="add-sub-btn decrease-btn"
+            onClick={() =>
+              prodQuantity === 1
+                ? removeFromCart(_id)
+                : updateCart(_id, "decrement")
+            }
+          >
             <i className="fas fa-minus"></i>
           </button>
-          <p className="quantity">1</p>
-          <button className="add-sub-btn increase-btn">
+          <p className="quantity">{prodQuantity}</p>
+          <button
+            className="add-sub-btn increase-btn"
+            onClick={() => updateCart(_id, "increment")}
+          >
             <i className="fas fa-plus"></i>
           </button>
         </div>
         <button className="prod-action-btn wishlist-btn">
           Move to Wishlist
         </button>
-        <button onClick={()=>removeFromCart(_id)} className="prod-action-btn remove-btn">Remove from Cart</button>
+        <button
+          onClick={() => removeFromCart(_id)}
+          className="prod-action-btn remove-btn"
+        >
+          Remove from Cart
+        </button>
       </div>
     </div>
   );

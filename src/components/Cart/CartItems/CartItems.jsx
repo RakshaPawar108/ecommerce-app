@@ -1,7 +1,7 @@
 import { CartItem } from "../CartItem/CartItem";
 import { CartBill } from "../CartBill/CartBill";
 import { useCart, useAuth } from "../../../context";
-import { removeFromCartService } from "../../../services";
+import { removeFromCartService, updateCartService } from "../../../services";
 
 export const CartItems = () => {
   const { cartState, cartDispatch } = useCart();
@@ -17,6 +17,22 @@ export const CartItems = () => {
       alert("Unable to remove from cart.");
     }
   };
+
+  const updateCartHandler = async (_id, actionType) => {
+    if (authState.token) {
+      const response = await updateCartService(
+        _id,
+        actionType,
+        authState.token
+      );
+      if (response.status === 200) {
+        cartDispatch({ type: "UPDATE_CART", payload: response.data.cart });
+      }
+    } else {
+      alert("Unable to update cart.");
+    }
+  };
+
   return (
     <>
       <div className="cart-items">
@@ -30,7 +46,9 @@ export const CartItems = () => {
             inWishlist={cartItem.inWishlist}
             prodDiscount={cartItem.prodDiscount}
             _id={cartItem._id}
+            prodQuantity={cartItem.qty}
             removeFromCart={removeFromCartHandler}
+            updateCart={updateCartHandler}
           />
         ))}
       </div>
