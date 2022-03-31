@@ -43,7 +43,9 @@ export const CartBill = () => {
         </div>
         <div className="items-price total-price-container">
           <p className="item-type total-price">Total Amount</p>
-          <p className="item-type-price total-price-value">₹ {totalPrice - discount + 15}</p>
+          <p className="item-type-price total-price-value">
+            ₹ {(totalPrice - discount + 15).toFixed(2)}
+          </p>
         </div>
         <button className="prod-action-btn order-btn">PLACE ORDER</button>
       </div>
