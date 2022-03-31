@@ -21,7 +21,7 @@ export const Cart = () => {
 
   useEffect(() => {
     getInitialCart();
-  }, []);
+  },);
 
   return (
     <main className="cart-wrapper">
