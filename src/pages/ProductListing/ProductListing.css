@@ -35,6 +35,15 @@
   color: var(--dark-gray);
 }
 
+.prod-action-btn:disabled{
+  background-color:var(--dark-gray);
+  pointer-events: none;
+}
+
+.prod-action-btn:disabled:hover{
+  background-color:var(--dark-gray)
+}
+
 @media only screen and (max-width: 1024px) {
   .filter-container {
     display: none;

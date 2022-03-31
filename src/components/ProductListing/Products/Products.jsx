@@ -45,6 +45,12 @@ export const Products = () => {
     }
   };
 
+  const alreadyInCart = (_id) => {
+    const productInCart = cartState.cart.find((product) => product._id === _id);
+
+    return productInCart ? true : false;
+  };
+
   useEffect(() => listProducts(), []);
 
   const priceFilteredProducts = priceRangeFilter(products, state);
@@ -67,6 +73,8 @@ export const Products = () => {
           prodDiscount={product.prodDiscount}
           prodRating={product.prodRating}
           addToCart={addToCartHandler}
+          _id={product._id}
+          alreadyInCart={alreadyInCart}
         />
       ))}
     </section>

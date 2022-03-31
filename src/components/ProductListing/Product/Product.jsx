@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 export const Product = ({
   _id,
   prodTitle,
@@ -9,7 +11,9 @@ export const Product = ({
   prodDiscount,
   prodRating,
   addToCart,
+  alreadyInCart,
 }) => {
+  const navigate = useNavigate();
   return (
     <div className="card product-card">
       <div className="prod-img-container">
@@ -38,9 +42,23 @@ export const Product = ({
             <small className="card-discount">({prodDiscount}% OFF)</small>
           ) : null}
         </p>
-        <button onClick={addToCart} className="prod-action-btn">
-          Move to Cart
-        </button>
+        {alreadyInCart(_id) === false ? (
+          <button
+            disabled={badgeTitle === "Sold Out"}
+            onClick={() => addToCart(_id)}
+            className="prod-action-btn"
+          >
+            Add To Cart
+          </button>
+        ) : (
+          <button
+            disabled={badgeTitle === "Sold Out"}
+            onClick={() => navigate("/cart")}
+            className="prod-action-btn"
+          >
+            Go to Cart
+          </button>
+        )}
       </div>
     </div>
   );
