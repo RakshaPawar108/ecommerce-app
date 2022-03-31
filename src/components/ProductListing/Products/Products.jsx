@@ -18,6 +18,7 @@ export const Products = () => {
   const { authState } = useAuth();
   const { cartState, cartDispatch } = useCart();
   const navigate = useNavigate();
+  const [disableBtn, setDisableBtn] = useState(false);
 
   const listProducts = async () => {
     try {
@@ -33,11 +34,13 @@ export const Products = () => {
   };
 
   const addToCartHandler = async (_id) => {
+    setDisableBtn(true);
     const product = products.find((product) => product._id === _id);
     if (authState.token) {
       const response = await addToCartService(product, authState.token);
       if (response.status === 201) {
         cartDispatch({ type: "ADD_TO_CART", payload: response.data.cart });
+        setDisableBtn(false);
       }
     } else {
       alert("Please log in to start adding items to cart");
@@ -75,6 +78,7 @@ export const Products = () => {
           addToCart={addToCartHandler}
           _id={product._id}
           alreadyInCart={alreadyInCart}
+          cartBtnDisabled={disableBtn}
         />
       ))}
     </section>

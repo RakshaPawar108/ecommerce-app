@@ -12,6 +12,7 @@ export const Product = ({
   prodRating,
   addToCart,
   alreadyInCart,
+  cartBtnDisabled
 }) => {
   const navigate = useNavigate();
   return (
@@ -44,7 +45,7 @@ export const Product = ({
         </p>
         {alreadyInCart(_id) === false ? (
           <button
-            disabled={badgeTitle === "Sold Out"}
+            disabled={badgeTitle === "Sold Out" || cartBtnDisabled}
             onClick={() => addToCart(_id)}
             className="prod-action-btn"
           >
@@ -52,7 +53,7 @@ export const Product = ({
           </button>
         ) : (
           <button
-            disabled={badgeTitle === "Sold Out"}
+            disabled={cartBtnDisabled}
             onClick={() => navigate("/cart")}
             className="prod-action-btn"
           >
