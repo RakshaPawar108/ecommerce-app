@@ -9,12 +9,14 @@ const addToWishlistService = async (product, token) => {
     );
 
     if (response.status === 201) {
+      return response;
     } else {
+      alert("Error", response);
       throw new Error();
     }
-
-    return response;
-  } catch (err) {}
+  } catch (err) {
+    alert("Error");
+  }
 };
 
 export { addToWishlistService };
