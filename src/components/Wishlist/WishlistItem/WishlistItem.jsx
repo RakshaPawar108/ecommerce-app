@@ -21,7 +21,10 @@ export const WishlistItem = ({
         <h3 className="prod-title">{prodTitle}</h3>
         <h4 className="prod-category">{categoryName}</h4>
         <h5 className="prod-rating">Ratings: {prodRating}/5</h5>
-        <button onClick={() => removeFromWishlist(_id)}>
+        <button
+          title="Remove from Wishlist"
+          onClick={() => removeFromWishlist(_id)}
+        >
           <i className="fas fa-heart overlay-icon"></i>
         </button>
         {badgeTitle && <span className="prod-ecomm-badge">{badgeTitle}</span>}
