@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 export const WishlistItem = ({
   _id,
   prodTitle,
@@ -8,7 +9,11 @@ export const WishlistItem = ({
   badgeTitle,
   prodRating,
   removeFromWishlist,
+  addToCart,
+  alreadyInCart,
+  cartBtnDisabled,
 }) => {
+  const navigate = useNavigate();
   return (
     <div className="card product-card">
       <img src={prodImg} alt="card with icon" className="product-card-img" />
@@ -37,7 +42,23 @@ export const WishlistItem = ({
             <small className="card-discount">({prodDiscount}% OFF)</small>
           ) : null}
         </p>
-        <button className="prod-action-btn">Move to Cart</button>
+        {alreadyInCart(_id) === false ? (
+          <button
+            disabled={cartBtnDisabled}
+            onClick={() => addToCart(_id)}
+            className="prod-action-btn"
+          >
+            Add To Cart
+          </button>
+        ) : (
+          <button
+            disabled={cartBtnDisabled}
+            onClick={() => navigate("/cart")}
+            className="prod-action-btn"
+          >
+            Go to Cart
+          </button>
+        )}
       </div>
     </div>
   );
