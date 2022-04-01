@@ -47,7 +47,7 @@ export const WishlistItem = ({
         </p>
         {alreadyInCart(_id) === false ? (
           <button
-            disabled={cartBtnDisabled}
+            disabled={badgeTitle === "Sold Out" || cartBtnDisabled}
             onClick={() => addToCart(_id)}
             className="prod-action-btn"
           >
