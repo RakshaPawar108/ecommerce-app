@@ -1,24 +1,67 @@
-import { pizzaImg } from "./../../../assets/images/index";
-
-export const WishlistItem = () => {
+import { useNavigate } from "react-router-dom";
+export const WishlistItem = ({
+  _id,
+  prodTitle,
+  prodImg,
+  price,
+  categoryName,
+  prodDiscount,
+  badgeTitle,
+  prodRating,
+  removeFromWishlist,
+  addToCart,
+  alreadyInCart,
+  cartBtnDisabled,
+}) => {
+  const navigate = useNavigate();
   return (
     <div className="card product-card">
-      <img src={pizzaImg} alt="card with icon" className="product-card-img" />
+      <img src={prodImg} alt="card with icon" className="product-card-img" />
       <div className="product-card-content">
-        <h3 className="prod-title">Product Title</h3>
-        <h4 className="prod-category">Product Category</h4>
-        <i className="fas fa-heart overlay-icon"></i>
-        <span className="prod-ecomm-badge">New</span>
+        <h3 className="prod-title">{prodTitle}</h3>
+        <h4 className="prod-category">{categoryName}</h4>
+        <h5 className="prod-rating">Ratings: {prodRating}/5</h5>
+        <button
+          title="Remove from Wishlist"
+          onClick={() => removeFromWishlist(_id)}
+        >
+          <i className="fas fa-heart overlay-icon"></i>
+        </button>
+        {badgeTitle && <span className="prod-ecomm-badge">{badgeTitle}</span>}
         <p>
-          <strong>Rs. 1499</strong>{" "}
-          <small>
-            <s>Rs. 2999</s>
-          </small>
-          <small className="card-discount">(50% OFF)</small>
+          {prodDiscount ? (
+            <strong>
+              ₹ {(price - (prodDiscount / 100) * price).toFixed(0)}
+            </strong>
+          ) : (
+            <strong>₹ {price}</strong>
+          )}{" "}
+          {prodDiscount ? (
+            <small>
+              <s>₹ {String(price)}</s>
+            </small>
+          ) : null}
+          {prodDiscount ? (
+            <small className="card-discount">({prodDiscount}% OFF)</small>
+          ) : null}
         </p>
-        <a href="/" className="prod-action-btn">
-          Move to Cart
-        </a>
+        {alreadyInCart(_id) === false ? (
+          <button
+            disabled={badgeTitle === "Sold Out" || cartBtnDisabled}
+            onClick={() => addToCart(_id)}
+            className="prod-action-btn"
+          >
+            Add To Cart
+          </button>
+        ) : (
+          <button
+            disabled={cartBtnDisabled}
+            onClick={() => navigate("/cart")}
+            className="prod-action-btn"
+          >
+            Go to Cart
+          </button>
+        )}
       </div>
     </div>
   );

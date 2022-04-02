@@ -1,16 +1,34 @@
+import { useNavigate } from "react-router-dom";
+import { useWishlist } from "../../../context";
+
 export const CartItem = ({
   _id,
   prodTitle,
   prodImg,
   price,
   categoryName,
-  inWishlist,
   prodDiscount,
   prodQuantity,
   removeFromCart,
   updateCart,
+  addToWishlist,
 }) => {
   const discountedPrice = (price - (prodDiscount / 100) * price).toFixed(0);
+  const { wishlistState } = useWishlist();
+  const navigate = useNavigate();
+
+  const inWishlist = (_id) => {
+    const productInWishlist = wishlistState.wishlist.find(
+      (product) => product._id === _id
+    );
+
+    return productInWishlist ? true : false;
+  };
+
+  const moveToWishlist = (_id) => {
+    removeFromCart(_id);
+    addToWishlist(_id);
+  };
 
   return (
     <div className="ecomm-horizontal-card">
@@ -54,9 +72,22 @@ export const CartItem = ({
             <i className="fas fa-plus"></i>
           </button>
         </div>
-        <button className="prod-action-btn wishlist-btn">
-          Move to Wishlist
-        </button>
+        {inWishlist(_id) === false ? (
+          <button
+            onClick={() => moveToWishlist(_id)}
+            className="prod-action-btn wishlist-btn"
+          >
+            Move to Wishlist
+          </button>
+        ) : (
+          <button
+            onClick={() => navigate("/wishlist")}
+            className="prod-action-btn wishlist-btn"
+          >
+            Go to Wishlist
+          </button>
+        )}
+
         <button
           onClick={() => removeFromCart(_id)}
           className="prod-action-btn remove-btn"

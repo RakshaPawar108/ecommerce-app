@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const removeFromCartService = async (_id, token) => {
+const fetchInitialWishlistService = async (token) => {
   try {
-    const response = await axios.delete(`/api/user/cart/${_id}`, {
+    const response = await axios.get("/api/user/wishlist", {
       headers: { authorization: token },
     });
 
@@ -17,4 +17,4 @@ const removeFromCartService = async (_id, token) => {
   }
 };
 
-export { removeFromCartService };
+export { fetchInitialWishlistService };

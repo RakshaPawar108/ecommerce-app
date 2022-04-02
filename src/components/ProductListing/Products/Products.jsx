@@ -9,8 +9,12 @@ import {
   otherFilters,
   ratingFilter,
 } from "./../../../utils";
-import { useAuth, useFilter, useCart } from "../../../context";
-import { addToCartService } from "../../../services";
+import { useAuth, useFilter, useCart, useWishlist } from "../../../context";
+import {
+  addToCartService,
+  addToWishlistService,
+  removeFromWishlistService,
+} from "../../../services";
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
@@ -19,8 +23,10 @@ export const Products = () => {
     authState: { token },
   } = useAuth();
   const { cartState, cartDispatch } = useCart();
+  const { wishlistState, wishlistDispatch } = useWishlist();
   const navigate = useNavigate();
   const [disableBtn, setDisableBtn] = useState(false);
+  const [disableWishlistBtn, setDisableWishlistBtn] = useState(false);
 
   const listProducts = async () => {
     try {
@@ -56,6 +62,47 @@ export const Products = () => {
     return productInCart ? true : false;
   };
 
+  const inWishlist = (_id) => {
+    const productInWishlist = wishlistState.wishlist.find(
+      (product) => product._id === _id
+    );
+
+    return productInWishlist ? true : false;
+  };
+
+  const addToWishlistHandler = async (_id) => {
+    setDisableWishlistBtn(true);
+    const product = products.find((product) => product._id === _id);
+    if (token) {
+      if (!inWishlist(_id)) {
+        const response = await addToWishlistService(product, token);
+        if (response.status === 201) {
+          wishlistDispatch({
+            type: "ADD_TO_WISHLIST",
+            payload: response.data.wishlist,
+          });
+        } else {
+          alert("Unable to add to Wishlist");
+        }
+        setDisableWishlistBtn(false);
+      } else {
+        const response = await removeFromWishlistService(_id, token);
+        if (response.status === 200) {
+          wishlistDispatch({
+            type: "REMOVE_FROM_WISHLIST",
+            payload: response.data.wishlist,
+          });
+        } else {
+          alert("Unable to remove from wishlist");
+        }
+        setDisableWishlistBtn(false);
+      }
+    } else {
+      alert("Please log in to start adding items to wishlist");
+      navigate("/login");
+    }
+  };
+
   useEffect(() => listProducts(), []);
 
   const priceFilteredProducts = priceRangeFilter(products, state);
@@ -69,18 +116,13 @@ export const Products = () => {
       {sortedProducts.map((product) => (
         <Product
           key={product._id}
-          prodTitle={product.prodTitle}
-          prodImg={product.prodImg}
-          price={product.price}
-          categoryName={product.categoryName}
-          badgeTitle={product.badgeTitle}
-          inWishlist={product.inWishlist}
-          prodDiscount={product.prodDiscount}
-          prodRating={product.prodRating}
+          {...product}
           addToCart={addToCartHandler}
-          _id={product._id}
           alreadyInCart={alreadyInCart}
           cartBtnDisabled={disableBtn}
+          inWishlist={inWishlist}
+          addToWishlist={addToWishlistHandler}
+          wishlistBtnDisabled={disableWishlistBtn}
         />
       ))}
     </section>

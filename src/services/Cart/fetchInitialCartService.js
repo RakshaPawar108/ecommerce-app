@@ -12,7 +12,9 @@ const fetchInitialCartService = async (token) => {
     }
 
     return response;
-  } catch (err) {}
+  } catch (err) {
+    alert("Error", err);
+  }
 };
 
 export { fetchInitialCartService };

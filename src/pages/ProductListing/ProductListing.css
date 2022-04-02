@@ -44,6 +44,14 @@
   background-color:var(--dark-gray)
 }
 
+.wishlist-btn:disabled{
+  background-color:var(--dark-gray);
+  pointer-events: none;
+}
+.wishlist-btn:disabled:hover{
+  background-color:var(--dark-gray);
+}
+
 @media only screen and (max-width: 1024px) {
   .filter-container {
     display: none;

@@ -1,22 +1,22 @@
 import axios from "axios";
 
-const addToCartService = async (product, token) => {
+const addToWishlistService = async (product, token) => {
   try {
     const response = await axios.post(
-      "/api/user/cart",
+      "/api/user/wishlist",
       { product },
       { headers: { authorization: token } }
     );
 
     if (response.status === 201) {
+      return response;
     } else {
+      alert("Error", response);
       throw new Error();
     }
-
-    return response;
   } catch (err) {
     alert("Error", err);
   }
 };
 
-export { addToCartService };
+export { addToWishlistService };

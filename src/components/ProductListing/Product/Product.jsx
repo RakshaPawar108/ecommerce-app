@@ -12,7 +12,9 @@ export const Product = ({
   prodRating,
   addToCart,
   alreadyInCart,
-  cartBtnDisabled
+  cartBtnDisabled,
+  addToWishlist,
+  wishlistBtnDisabled,
 }) => {
   const navigate = useNavigate();
   return (
@@ -24,7 +26,26 @@ export const Product = ({
         <h3 className="prod-title">{prodTitle}</h3>
         <h4 className="prod-category">{categoryName}</h4>
         <h5 className="prod-rating">Ratings: {prodRating}/5</h5>
-        <i className="far fa-heart overlay-icon"></i>
+        {inWishlist(_id) === false ? (
+          <button
+            className="wishlist-btn"
+            disabled={wishlistBtnDisabled}
+            title="Add to Wishlist"
+            onClick={() => addToWishlist(_id)}
+          >
+            <i className="far fa-heart overlay-icon"></i>
+          </button>
+        ) : (
+          <button
+            className="wishlist-btn"
+            disabled={wishlistBtnDisabled}
+            title="Remove from Wishlist"
+            onClick={() => addToWishlist(_id)}
+          >
+            <i className="fas fa-heart overlay-icon"></i>
+          </button>
+        )}
+
         {badgeTitle && <span className="prod-ecomm-badge">{badgeTitle}</span>}
         <p>
           {prodDiscount ? (

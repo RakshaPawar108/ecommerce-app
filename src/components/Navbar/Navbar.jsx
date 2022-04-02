@@ -1,12 +1,14 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { useAuth, useCart } from "../../context";
+import { useAuth, useCart, useWishlist } from "../../context";
 
 const Navbar = () => {
   const {
     authState: { token, user },
   } = useAuth();
   const { cartState } = useCart();
+  const { wishlistState } = useWishlist();
+
   return (
     <>
       <input type="checkbox" id="check" />
@@ -32,10 +34,16 @@ const Navbar = () => {
             <Link to="/products">Products</Link>
           </li>
           <li className="navigation-item">
-            <Link to="/wishlist">
+            <Link to={token ? "/wishlist" : "/login"}>
               <div className="icons-container badge">
                 <i className="fas fa-heart badge-icon"></i>
-                <span className="icon-badge">10</span>
+                {wishlistState.wishlist.length > 0 ? (
+                  <span className="icon-badge">
+                    {wishlistState.wishlist.length}
+                  </span>
+                ) : (
+                  <span className="icon-badge">0</span>
+                )}
               </div>
               <span>Wishlist</span>
             </Link>
