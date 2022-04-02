@@ -70,15 +70,8 @@ export const WishlistItems = () => {
       {wishlistState.wishlist.map((wishlistItem) => (
         <WishlistItem
           key={wishlistItem._id}
-          prodTitle={wishlistItem.prodTitle}
-          prodImg={wishlistItem.prodImg}
-          price={wishlistItem.price}
-          categoryName={wishlistItem.categoryName}
-          prodDiscount={wishlistItem.prodDiscount}
-          _id={wishlistItem._id}
-          badgeTitle={wishlistItem.badgeTitle}
+          {...wishlistItem}
           removeFromWishlist={removeFromWishlistHandler}
-          prodRating={wishlistItem.prodRating}
           alreadyInCart={alreadyInCart}
           cartBtnDisabled={disableBtn}
           addToCart={addToCartHandler}

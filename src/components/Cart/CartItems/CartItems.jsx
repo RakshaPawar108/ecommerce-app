@@ -90,13 +90,7 @@ export const CartItems = () => {
         {cartState.cart.map((cartItem) => (
           <CartItem
             key={cartItem._id}
-            prodTitle={cartItem.prodTitle}
-            prodImg={cartItem.prodImg}
-            price={cartItem.price}
-            categoryName={cartItem.categoryName}
-            prodDiscount={cartItem.prodDiscount}
-            _id={cartItem._id}
-            prodQuantity={cartItem.qty}
+            {...cartItem}
             removeFromCart={removeFromCartHandler}
             updateCart={updateCartHandler}
             addToWishlist={addToWishlistHandler}

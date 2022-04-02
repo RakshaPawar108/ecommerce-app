@@ -112,15 +112,8 @@ export const Products = () => {
       {sortedProducts.map((product) => (
         <Product
           key={product._id}
-          prodTitle={product.prodTitle}
-          prodImg={product.prodImg}
-          price={product.price}
-          categoryName={product.categoryName}
-          badgeTitle={product.badgeTitle}
-          prodDiscount={product.prodDiscount}
-          prodRating={product.prodRating}
+          {...product}
           addToCart={addToCartHandler}
-          _id={product._id}
           alreadyInCart={alreadyInCart}
           cartBtnDisabled={disableBtn}
           inWishlist={inWishlist}
