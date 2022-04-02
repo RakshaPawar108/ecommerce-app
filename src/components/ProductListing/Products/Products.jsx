@@ -26,6 +26,7 @@ export const Products = () => {
   const { wishlistState, wishlistDispatch } = useWishlist();
   const navigate = useNavigate();
   const [disableBtn, setDisableBtn] = useState(false);
+  const [disableWishlistBtn, setDisableWishlistBtn] = useState(false);
 
   const listProducts = async () => {
     try {
@@ -70,6 +71,7 @@ export const Products = () => {
   };
 
   const addToWishlistHandler = async (_id) => {
+    setDisableWishlistBtn(true);
     const product = products.find((product) => product._id === _id);
     if (token) {
       if (!inWishlist(_id)) {
@@ -82,6 +84,7 @@ export const Products = () => {
         } else {
           alert("Unable to add to Wishlist");
         }
+        setDisableWishlistBtn(false);
       } else {
         const response = await removeFromWishlistService(_id, token);
         if (response.status === 200) {
@@ -92,6 +95,7 @@ export const Products = () => {
         } else {
           alert("Unable to remove from wishlist");
         }
+        setDisableWishlistBtn(false);
       }
     } else {
       alert("Please log in to start adding items to wishlist");
@@ -118,6 +122,7 @@ export const Products = () => {
           cartBtnDisabled={disableBtn}
           inWishlist={inWishlist}
           addToWishlist={addToWishlistHandler}
+          wishlistBtnDisabled={disableWishlistBtn}
         />
       ))}
     </section>

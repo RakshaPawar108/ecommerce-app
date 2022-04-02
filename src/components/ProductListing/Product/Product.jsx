@@ -14,6 +14,7 @@ export const Product = ({
   alreadyInCart,
   cartBtnDisabled,
   addToWishlist,
+  wishlistBtnDisabled,
 }) => {
   const navigate = useNavigate();
   return (
@@ -26,11 +27,18 @@ export const Product = ({
         <h4 className="prod-category">{categoryName}</h4>
         <h5 className="prod-rating">Ratings: {prodRating}/5</h5>
         {inWishlist(_id) === false ? (
-          <button title="Add to Wishlist" onClick={() => addToWishlist(_id)}>
+          <button
+            className="wishlist-btn"
+            disabled={wishlistBtnDisabled}
+            title="Add to Wishlist"
+            onClick={() => addToWishlist(_id)}
+          >
             <i className="far fa-heart overlay-icon"></i>
           </button>
         ) : (
           <button
+            className="wishlist-btn"
+            disabled={wishlistBtnDisabled}
             title="Remove from Wishlist"
             onClick={() => addToWishlist(_id)}
           >
