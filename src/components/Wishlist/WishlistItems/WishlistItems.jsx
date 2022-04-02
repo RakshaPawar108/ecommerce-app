@@ -23,8 +23,8 @@ export const WishlistItems = () => {
       } else {
         throw new Error();
       }
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
   };
 
