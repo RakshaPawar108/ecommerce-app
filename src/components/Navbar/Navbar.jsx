@@ -14,7 +14,7 @@ const Navbar = () => {
       <input type="checkbox" id="check" />
       <header className="header">
         <div className="navigation-brand">
-          <Link to="/">MySite</Link>
+          <Link to="/">Cravings</Link>
         </div>
 
         <div className="input-container outlined search-box">

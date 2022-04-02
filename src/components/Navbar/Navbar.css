@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Beau+Rivage&display=swap");
+
 .header {
   background-color: var(--default-color);
   color: var(--golden);
@@ -9,11 +11,13 @@
   width: 100%;
 }
 
-.navigation-brand {
+.navigation-brand a {
   padding: 1rem;
-  font-size: 3.5rem;
+  font-size: 6rem;
   font-weight: 600;
   cursor: pointer;
+  font-family: "Beau Rivage", cursive;
+  letter-spacing: 0.3rem;
 }
 
 .button {
