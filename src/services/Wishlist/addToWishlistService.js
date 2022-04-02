@@ -15,7 +15,7 @@ const addToWishlistService = async (product, token) => {
       throw new Error();
     }
   } catch (err) {
-    alert("Error");
+    alert("Error", err);
   }
 };
 

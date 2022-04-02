@@ -58,7 +58,7 @@ export const CartItems = () => {
         throw new Error();
       }
     } catch (error) {
-      console.log(error);
+      alert("Error", error);
     }
   };
 

@@ -12,7 +12,9 @@ const removeFromCartService = async (_id, token) => {
     }
 
     return response;
-  } catch (err) {}
+  } catch (err) {
+    alert("Error", err);
+  }
 };
 
 export { removeFromCartService };

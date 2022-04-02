@@ -21,7 +21,9 @@ export const Wishlist = () => {
       } else {
         throw new Error();
       }
-    } catch (err) {}
+    } catch (err) {
+      alert("Error", err);
+    }
   };
 
   useEffect(() => {

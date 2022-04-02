@@ -14,7 +14,9 @@ const addToCartService = async (product, token) => {
     }
 
     return response;
-  } catch (err) {}
+  } catch (err) {
+    alert("Error", err);
+  }
 };
 
 export { addToCartService };
