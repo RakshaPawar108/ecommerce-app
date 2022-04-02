@@ -72,6 +72,8 @@ export const CartItems = () => {
             type: "ADD_TO_WISHLIST",
             payload: response.data.wishlist,
           });
+        } else {
+          alert("Unable to add to wishlist.");
         }
       }
     } else {

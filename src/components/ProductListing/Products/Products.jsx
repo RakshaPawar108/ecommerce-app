@@ -79,6 +79,8 @@ export const Products = () => {
             type: "ADD_TO_WISHLIST",
             payload: response.data.wishlist,
           });
+        } else {
+          alert("Unable to add to Wishlist");
         }
       } else {
         const response = await removeFromWishlistService(_id, token);
@@ -87,6 +89,8 @@ export const Products = () => {
             type: "REMOVE_FROM_WISHLIST",
             payload: response.data.wishlist,
           });
+        } else {
+          alert("Unable to remove from wishlist");
         }
       }
     } else {
