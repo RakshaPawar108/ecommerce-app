@@ -9,6 +9,9 @@ const wishlistReducer = (state, action) => {
     case "GET_INITIAL_WISHLIST":
       return { ...state, wishlist: action.payload };
 
+    case "EMPTY_WISHLIST":
+      return { ...state, wishlist: [] };
+
     default:
       return state;
   }
