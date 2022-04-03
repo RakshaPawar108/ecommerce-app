@@ -91,6 +91,7 @@ export const CartItems = () => {
           <CartItem
             key={cartItem._id}
             {...cartItem}
+            prodQuantity={cartItem.qty}
             removeFromCart={removeFromCartHandler}
             updateCart={updateCartHandler}
             addToWishlist={addToWishlistHandler}
