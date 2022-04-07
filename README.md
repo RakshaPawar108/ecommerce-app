@@ -62,13 +62,14 @@ Visit the Mockbee GitHub repository [here](https://github.com/neogcamp/mockBee)
 
 ## Demo
 
-![Demo1](/src/assets/gifs/ecomm-gif1.gif)
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/30971358/162141648-fb8f6251-7497-4568-a59b-34971068848a.gif)
 
 
-![Demo2](/src/assets/gifs/ecomm-gif2.gif)
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/30971358/162142131-fcf6848e-8dfa-4282-8375-cafc3a28ed1f.gif)
 
 
-![Demo3](/src/assets/gifs/ecomm-gif3.gif)
+![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/30971358/162142646-38eb0648-3ed3-4c4c-b48e-82fcc8bee5f3.gif)
+
 
 
 ## About the Developer
