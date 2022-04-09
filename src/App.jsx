@@ -1,5 +1,6 @@
 import Mockman from "mockman-js";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import { Navbar, Footer } from "./components";
 import {
   Home,
@@ -9,13 +10,24 @@ import {
   Logout,
   ProductListing,
   Wishlist,
-  User
+  User,
 } from "./pages";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
