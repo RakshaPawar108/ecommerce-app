@@ -1,0 +1,27 @@
+.notfound-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-grow: 1;
+}
+
+.not-found-title {
+  font-size: 3rem;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.notfound-wrapper img {
+  height: 100%;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.home-btn {
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin: 1rem;
+}

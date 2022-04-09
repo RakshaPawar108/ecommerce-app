@@ -11,6 +11,7 @@ import {
   ProductListing,
   Wishlist,
   User,
+  NotFound,
 } from "./pages";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -40,6 +41,7 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/user" element={<User />} />
         <Route path="/mockman" element={<Mockman />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>

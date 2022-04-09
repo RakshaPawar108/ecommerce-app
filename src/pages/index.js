@@ -6,3 +6,4 @@ export { Login } from "./Authentication/Login/Login";
 export { Signup } from "./Authentication/Signup/Signup";
 export { Logout } from "./Authentication/Logout/Logout";
 export { User } from "./User/User";
+export { NotFound } from "./NotFound/NotFound";

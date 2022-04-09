@@ -60,6 +60,9 @@ import sabudanaKhichdi from "./indian/sabudana-khichdi-9.jpg";
 import samosaImg from "./indian/samosa-3.jpg";
 import vegThali from "./indian/veg-thali-1.jpg";
 
+// Page Images
+import notFoundImg from "./NotFound.svg";
+
 export {
   pizzaImg,
   meatSkewerImg,
@@ -107,4 +110,5 @@ export {
   sabudanaKhichdi,
   samosaImg,
   vegThali,
+  notFoundImg,
 };
