@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useCart, useAuth } from "../../context";
 import { fetchInitialCartService } from "../../services";
-import { CartItems } from "./../../components";
+import { CartItems, Loader } from "./../../components";
 import "./Cart.css";
 
 export const Cart = () => {
   const { cartState, cartDispatch } = useCart();
+  const [loading, setLoading] = useState(true);
   const {
     authState: { token },
   } = useAuth();
@@ -14,6 +15,7 @@ export const Cart = () => {
     try {
       const response = await fetchInitialCartService(token);
       if (response.status === 200) {
+        setLoading(false);
         cartDispatch({ type: "FETCH_INITIAL", payload: response.data.cart });
       } else {
         throw new Error();
@@ -27,14 +29,17 @@ export const Cart = () => {
 
   return (
     <main className="cart-wrapper">
+      {loading && <Loader />}
       <h3 className="cart-heading">My Cart</h3>
       <small className="num-items">{cartState.cart.length} Items</small>
       <section className="cart-container">
-        {cartState.cart.length > 0 ? (
-          <CartItems />
-        ) : (
-          <h1>Your Cart is Empty</h1>
-        )}
+        {!loading ? (
+          cartState.cart.length > 0 ? (
+            <CartItems />
+          ) : (
+            <h1>Your Cart is Empty</h1>
+          )
+        ) : null}
       </section>
     </main>
   );
