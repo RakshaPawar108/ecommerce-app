@@ -9,6 +9,7 @@ import {
   updateCartService,
   addToWishlistService,
 } from "../../../services";
+import { toast } from "react-toastify";
 
 export const CartItems = () => {
   const [products, setProducts] = useState([]);
@@ -25,8 +26,9 @@ export const CartItems = () => {
       if (response.status === 200) {
         cartDispatch({ type: "REMOVE_FROM_CART", payload: response.data.cart });
       }
+      toast.success("Item removed from cart successfully");
     } else {
-      alert("Unable to remove from cart.");
+      toast.error("Unable to remove from cart.");
     }
   };
 
@@ -37,7 +39,7 @@ export const CartItems = () => {
         cartDispatch({ type: "UPDATE_CART", payload: response.data.cart });
       }
     } else {
-      alert("Unable to update cart.");
+      toast.error("Unable to update cart.");
     }
   };
 
@@ -58,7 +60,7 @@ export const CartItems = () => {
         throw new Error();
       }
     } catch (error) {
-      alert("Error", error);
+      toast.error(`ERROR: ${error}`);
     }
   };
 
@@ -72,12 +74,13 @@ export const CartItems = () => {
             type: "ADD_TO_WISHLIST",
             payload: response.data.wishlist,
           });
+          toast.success("Item moved to wishlist!");
         } else {
-          alert("Unable to add to wishlist.");
+          toast.error("Unable to move item to wishlist.");
         }
       }
     } else {
-      alert("Please log in to start adding items to wishlist");
+      toast.warning("Please log in to start adding items to wishlist");
       navigate("/login");
     }
   };

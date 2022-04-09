@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Loader, WishlistItems } from "../../components";
 import { useWishlist, useAuth } from "../../context";
 import { fetchInitialWishlistService } from "../../services";
+import { toast } from "react-toastify";
 import "./Wishlist.css";
 
 export const Wishlist = () => {
@@ -24,7 +25,7 @@ export const Wishlist = () => {
         throw new Error();
       }
     } catch (err) {
-      alert("Error", err);
+      toast.error(`Error in fetching wishlist: ${err}`);
     }
   };
 

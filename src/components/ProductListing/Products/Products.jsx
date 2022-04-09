@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Product } from "../Product/Product";
 import axios from "axios";
 import {
@@ -53,8 +54,9 @@ export const Products = () => {
         cartDispatch({ type: "ADD_TO_CART", payload: response.data.cart });
         setDisableBtn(false);
       }
+      toast.success("Item added to cart");
     } else {
-      alert("Please log in to start adding items to cart");
+      toast.warning("Please log in to start adding items to cart");
       navigate("/login");
     }
   };
@@ -84,8 +86,9 @@ export const Products = () => {
             type: "ADD_TO_WISHLIST",
             payload: response.data.wishlist,
           });
+          toast.success("Item added to wishlist");
         } else {
-          alert("Unable to add to Wishlist");
+          toast.error("Unable to add to Wishlist");
         }
         setDisableWishlistBtn(false);
       } else {
@@ -95,13 +98,14 @@ export const Products = () => {
             type: "REMOVE_FROM_WISHLIST",
             payload: response.data.wishlist,
           });
+          toast.success("Item removed from wishlist");
         } else {
-          alert("Unable to remove from wishlist");
+          toast.error("Unable to remove from wishlist");
         }
         setDisableWishlistBtn(false);
       }
     } else {
-      alert("Please log in to start adding items to wishlist");
+      toast.warning("Please log in to start adding items to wishlist");
       navigate("/login");
     }
   };

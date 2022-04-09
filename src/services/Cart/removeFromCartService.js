@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const removeFromCartService = async (_id, token) => {
   try {
@@ -13,7 +14,7 @@ const removeFromCartService = async (_id, token) => {
 
     return response;
   } catch (err) {
-    alert("Error", err);
+    toast.error(`Error: ${err}`);
   }
 };
 
