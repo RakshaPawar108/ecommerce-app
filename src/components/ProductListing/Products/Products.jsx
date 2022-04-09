@@ -15,6 +15,7 @@ import {
   addToWishlistService,
   removeFromWishlistService,
 } from "../../../services";
+import { Loader } from "../../Loader/Loader";
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
@@ -27,12 +28,14 @@ export const Products = () => {
   const navigate = useNavigate();
   const [disableBtn, setDisableBtn] = useState(false);
   const [disableWishlistBtn, setDisableWishlistBtn] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const listProducts = async () => {
     try {
       const response = await axios.get("/api/products");
       if (response.status === 200) {
         setProducts(response.data.products);
+        setLoading(false);
       } else {
         throw new Error();
       }
@@ -113,18 +116,23 @@ export const Products = () => {
 
   return (
     <section className="product-container">
-      {sortedProducts.map((product) => (
-        <Product
-          key={product._id}
-          {...product}
-          addToCart={addToCartHandler}
-          alreadyInCart={alreadyInCart}
-          cartBtnDisabled={disableBtn}
-          inWishlist={inWishlist}
-          addToWishlist={addToWishlistHandler}
-          wishlistBtnDisabled={disableWishlistBtn}
-        />
-      ))}
+      {loading && <Loader />}
+
+      {!loading
+        ? sortedProducts.map((product) => (
+            <Product
+              key={product._id}
+              {...product}
+              addToCart={addToCartHandler}
+              alreadyInCart={alreadyInCart}
+              cartBtnDisabled={disableBtn}
+              inWishlist={inWishlist}
+              addToWishlist={addToWishlistHandler}
+              wishlistBtnDisabled={disableWishlistBtn}
+            />
+          ))
+        : null}
+      {}
     </section>
   );
 };
