@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../../context";
 import { provideAuth } from "../../../services";
+import { toast } from "react-toastify";
 
 export const Login = () => {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -23,10 +24,10 @@ export const Login = () => {
           },
         });
 
-        alert("Logged In successfully");
+        toast.success("Logged In successfully");
         navigate("/");
       } else {
-        alert("ERROR IN LOGGING IN!");
+        toast.error("Error in Logging in! Please sign up first");
       }
     } catch (err) {}
   };

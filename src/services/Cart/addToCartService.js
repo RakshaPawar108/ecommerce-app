@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const addToCartService = async (product, token) => {
   try {
@@ -15,7 +16,7 @@ const addToCartService = async (product, token) => {
 
     return response;
   } catch (err) {
-    alert("Error", err);
+    toast.error(`Error: ${err}`);
   }
 };
 

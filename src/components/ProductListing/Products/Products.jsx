@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Product } from "../Product/Product";
 import axios from "axios";
 import {
@@ -15,6 +16,7 @@ import {
   addToWishlistService,
   removeFromWishlistService,
 } from "../../../services";
+import { Loader } from "../../Loader/Loader";
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
@@ -27,12 +29,14 @@ export const Products = () => {
   const navigate = useNavigate();
   const [disableBtn, setDisableBtn] = useState(false);
   const [disableWishlistBtn, setDisableWishlistBtn] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const listProducts = async () => {
     try {
       const response = await axios.get("/api/products");
       if (response.status === 200) {
         setProducts(response.data.products);
+        setLoading(false);
       } else {
         throw new Error();
       }
@@ -50,8 +54,9 @@ export const Products = () => {
         cartDispatch({ type: "ADD_TO_CART", payload: response.data.cart });
         setDisableBtn(false);
       }
+      toast.success("Item added to cart");
     } else {
-      alert("Please log in to start adding items to cart");
+      toast.warning("Please log in to start adding items to cart");
       navigate("/login");
     }
   };
@@ -81,8 +86,9 @@ export const Products = () => {
             type: "ADD_TO_WISHLIST",
             payload: response.data.wishlist,
           });
+          toast.success("Item added to wishlist");
         } else {
-          alert("Unable to add to Wishlist");
+          toast.error("Unable to add to Wishlist");
         }
         setDisableWishlistBtn(false);
       } else {
@@ -92,13 +98,14 @@ export const Products = () => {
             type: "REMOVE_FROM_WISHLIST",
             payload: response.data.wishlist,
           });
+          toast.success("Item removed from wishlist");
         } else {
-          alert("Unable to remove from wishlist");
+          toast.error("Unable to remove from wishlist");
         }
         setDisableWishlistBtn(false);
       }
     } else {
-      alert("Please log in to start adding items to wishlist");
+      toast.warning("Please log in to start adding items to wishlist");
       navigate("/login");
     }
   };
@@ -113,18 +120,23 @@ export const Products = () => {
 
   return (
     <section className="product-container">
-      {sortedProducts.map((product) => (
-        <Product
-          key={product._id}
-          {...product}
-          addToCart={addToCartHandler}
-          alreadyInCart={alreadyInCart}
-          cartBtnDisabled={disableBtn}
-          inWishlist={inWishlist}
-          addToWishlist={addToWishlistHandler}
-          wishlistBtnDisabled={disableWishlistBtn}
-        />
-      ))}
+      {loading && <Loader />}
+
+      {!loading
+        ? sortedProducts.map((product) => (
+            <Product
+              key={product._id}
+              {...product}
+              addToCart={addToCartHandler}
+              alreadyInCart={alreadyInCart}
+              cartBtnDisabled={disableBtn}
+              inWishlist={inWishlist}
+              addToWishlist={addToWishlistHandler}
+              wishlistBtnDisabled={disableWishlistBtn}
+            />
+          ))
+        : null}
+      {}
     </section>
   );
 };

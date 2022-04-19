@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { WishlistItem } from "../WishlistItem/WishlistItem";
 import { useCart, useAuth, useWishlist } from "../../../context";
 import { removeFromWishlistService, addToCartService } from "../../../services";
@@ -37,8 +38,9 @@ export const WishlistItems = () => {
           payload: response.data.wishlist,
         });
       }
+      toast.success("Item removed from wishlist");
     } else {
-      alert("Unable to remove from wishlist.");
+      toast.error("Unable to remove from wishlist.");
     }
   };
 
@@ -57,8 +59,9 @@ export const WishlistItems = () => {
         cartDispatch({ type: "ADD_TO_CART", payload: response.data.cart });
         setDisableBtn(false);
       }
+      toast.success("Item added to cart");
     } else {
-      alert("Please log in to start adding items to cart");
+      toast.warning("Please log in to start adding items to cart");
       navigate("/login");
     }
   };

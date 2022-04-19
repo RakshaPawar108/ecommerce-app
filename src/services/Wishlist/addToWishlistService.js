@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const addToWishlistService = async (product, token) => {
   try {
@@ -11,11 +12,11 @@ const addToWishlistService = async (product, token) => {
     if (response.status === 201) {
       return response;
     } else {
-      alert("Error", response);
+      toast.error(`Error: ${response.status}`);
       throw new Error();
     }
   } catch (err) {
-    alert("Error", err);
+    toast.error(`Error: ${err}`);
   }
 };
 

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "./../../../context";
 import { provideAuth } from "../../../services";
+import { toast } from "react-toastify";
 
 export const Signup = () => {
   const [user, setUser] = useState({
@@ -38,15 +39,15 @@ export const Signup = () => {
               },
             });
 
-            alert("Signed Up successfully");
+            toast.success("Signed Up successfully");
             navigate("/");
           }
         } catch (err) {}
       } else {
-        alert("Password and Confirm Password fields should be same");
+        toast.warning("Password and Confirm Password fields should be same");
       }
     } else {
-      alert("Enter all fields to sign up");
+      toast.warning("Enter all fields to sign up");
     }
   };
   return (

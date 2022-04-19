@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuth, useCart, useWishlist } from "../../context";
+import { toast } from "react-toastify";
 import "./User.css";
 
 export const User = () => {
@@ -12,6 +13,7 @@ export const User = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     authDispatch({ type: "LOGOUT" });
+    toast.success("User logged out successfully");
   };
   return (
     <div>

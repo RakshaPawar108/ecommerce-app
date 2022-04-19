@@ -12,6 +12,7 @@ export const CartItem = ({
   removeFromCart,
   updateCart,
   addToWishlist,
+  wishlistBtnDisabled,
 }) => {
   const discountedPrice = (price - (prodDiscount / 100) * price).toFixed(0);
   const { wishlistState } = useWishlist();
@@ -76,6 +77,7 @@ export const CartItem = ({
           <button
             onClick={() => moveToWishlist(_id)}
             className="prod-action-btn wishlist-btn"
+            disabled={wishlistBtnDisabled}
           >
             Move to Wishlist
           </button>
@@ -83,6 +85,7 @@ export const CartItem = ({
           <button
             onClick={() => navigate("/wishlist")}
             className="prod-action-btn wishlist-btn"
+            disabled={wishlistBtnDisabled}
           >
             Go to Wishlist
           </button>

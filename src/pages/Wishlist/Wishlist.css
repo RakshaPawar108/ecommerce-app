@@ -5,6 +5,8 @@ body {
 .wishlist-wrapper {
   width: 90%;
   margin: 5rem auto 7rem auto;
+  min-height: 100vh;
+  flex-grow: 1;
 }
 
 .wishlist-heading {
