@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 
 export const CartItems = () => {
   const [products, setProducts] = useState([]);
+  const [disableWishlistBtn, setDisableWishlistBtn] = useState(false);
   const { cartState, cartDispatch } = useCart();
   const {
     authState: { token },
@@ -65,6 +66,7 @@ export const CartItems = () => {
   };
 
   const addToWishlistHandler = async (_id) => {
+    setDisableWishlistBtn(true);
     const product = products.find((product) => product._id === _id);
     if (token) {
       if (!inWishlist(_id)) {
@@ -79,6 +81,7 @@ export const CartItems = () => {
           toast.error("Unable to move item to wishlist.");
         }
       }
+      setDisableWishlistBtn(false);
     } else {
       toast.warning("Please log in to start adding items to wishlist");
       navigate("/login");
@@ -98,6 +101,7 @@ export const CartItems = () => {
             removeFromCart={removeFromCartHandler}
             updateCart={updateCartHandler}
             addToWishlist={addToWishlistHandler}
+            wishlistBtnDisabled={disableWishlistBtn}
           />
         ))}
       </div>
